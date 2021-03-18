@@ -1,4 +1,4 @@
-  #Student-Mentor-Guidance-System
+#Student-Mentor-Guidance-System
   
 In these trying times of the COVID-19 pandemic, Students may go through hardships to cope up with their studies and
 teachers may find it difficult to handle a lot of students simultaneously. So, our proposed system makes this task easier for
