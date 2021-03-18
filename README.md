@@ -1,4 +1,4 @@
-### Student-Mentor-Guidance-System
+# Student-Mentor-Guidance-System
   
 In these trying times of the COVID-19 pandemic, Students may go through hardships to cope up with their studies and
 teachers may find it difficult to handle a lot of students simultaneously. So, our proposed system makes this task easier for
@@ -7,7 +7,7 @@ number of students in the class or an organization gets distributed equally to t
 
 ## Technologies Used:
   
-  # Backend:
+  ### Backend:
       
       Framework: Spring Boot
       ORM Tool: Hibernate (Spring Data JPA)
@@ -15,7 +15,7 @@ number of students in the class or an organization gets distributed equally to t
       Build Tool: Maven
       Language: Java
       
-  # Frontend:
+  ### Frontend:
       
       Library: ReactJS
       Language: HTML, CSS, JavaScript, ES6
