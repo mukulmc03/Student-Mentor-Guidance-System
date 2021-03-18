@@ -21,7 +21,7 @@ public interface IStudentService {
 	public String deleteStudentById(int studentId);
 
 	// to update the course in table
-	public String updateStudent(int studentId, Student newStudent);
+	public String updateStudent(int studentId, StudentAddressDTO studentAddressDto);
 
 	//assign mentor to student and get list of assigned mentors in return
 	public Mentor assignMentorToStudent(int studentId);
