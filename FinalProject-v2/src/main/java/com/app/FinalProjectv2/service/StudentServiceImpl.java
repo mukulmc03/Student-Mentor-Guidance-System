@@ -1,6 +1,6 @@
 package com.app.FinalProjectv2.service;
 
-import java.util.List; 
+import java.util.List;  
 
 import javax.transaction.Transactional;
 
@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import com.app.FinalProjectv2.dto.StudentAddressDTO;
 import com.app.FinalProjectv2.exceptions.ResourceNotFoundException;
 import com.app.FinalProjectv2.pojo.Address;
+import com.app.FinalProjectv2.pojo.Course;
 import com.app.FinalProjectv2.pojo.Mentor;
 import com.app.FinalProjectv2.pojo.Student;
 import com.app.FinalProjectv2.respository.AddressRepository;
+import com.app.FinalProjectv2.respository.CourseRepository;
 import com.app.FinalProjectv2.respository.MentorRepository;
 import com.app.FinalProjectv2.respository.StudentRepository;
 
@@ -29,15 +31,22 @@ public class StudentServiceImpl implements IStudentService {
 	@Autowired
 	private AddressRepository addressRepository;
 	
+	@Autowired
+	private CourseRepository courseRepository;
+
+	
 	//register new student
 	@Override
-	public String registerStudent(StudentAddressDTO studentAddressDto) {
+	public String registerStudent(int courseId, StudentAddressDTO studentAddressDto) {
 		System.out.println(studentAddressDto.getStudent() + ", " + studentAddressDto.getAddress());
+		
+		//get course by Id
+		Course course = courseRepository.findById(courseId).orElseThrow(() -> new ResourceNotFoundException("No such course Avaialable!"));
 		
 		//get student object from studentAddressDto
 		Student newStudent = studentAddressDto.getStudent();
 		
-		//get address object from studentAddressDto
+		//get address object from studentAddressDto 
 		Address newAddress = studentAddressDto.getAddress();
 		
 		//store newAddress in DB
@@ -46,10 +55,13 @@ public class StudentServiceImpl implements IStudentService {
 		//assign newAddress to newStudent
 		newStudent.setStudentAddress(newAddress);
 		
+		//assign course to student
+		newStudent.setAssignedStudentCourse(course);
+		
 		//store newStudent in DB
 		studentRepository.save(newStudent);
 		
-		return "Student registered with Student Id: " + newStudent.getStudentId() + " and Address Id: " + newStudent.getStudentAddress().getAddressId() + " !";
+		return "Student registered with Student Id: " + newStudent.getStudentId() + " and Address Id: " + newStudent.getStudentAddress().getAddressId() + " and Course Id: " + newStudent.getAssignedStudentCourse().getCourseId() + "!";
 	}
 
 	//get student using studentId

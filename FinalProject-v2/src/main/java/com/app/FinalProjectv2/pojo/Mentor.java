@@ -44,7 +44,7 @@ public class Mentor {
 
 	@Column(name="batch_size")
 	private int batchSize;
-	
+
 	@Column(name = "current_batch_size", columnDefinition = "integer default 00")
 	private int currentBatchSize;
 
@@ -61,6 +61,7 @@ public class Mentor {
 	private float avgRating;
 
 	@OneToOne(cascade = CascadeType.ALL , orphanRemoval = true)
+	@JoinColumn(name = "mentor_address_id", referencedColumnName = "address_id", insertable = true, updatable = true)
 	@JsonIgnore 
 	private Address mentorAddress;
 
@@ -70,8 +71,9 @@ public class Mentor {
 
 	@OneToMany(mappedBy = "assignedMentor",cascade = CascadeType.ALL , orphanRemoval = true)
 	@JsonIgnoreProperties("assignedMentor")
+	@JsonIgnore
 	private List<Student> studentsList = new ArrayList<>();
-	
+
 	public Mentor() {
 		System.out.println("In Mentor's para-less Constructor!");
 	}
@@ -188,15 +190,15 @@ public class Mentor {
 				+ ", batchSize=" + batchSize + ", mentorDob=" + mentorDob + ", mentorGender=" + mentorGender
 				+ ", mentorJoinYear=" + mentorJoinYear + ", avgRating=" + avgRating + "]";
 	}
-	
+
 	// Helper Functions
-	
+
 	//to add Student in mentor table
 	public void addStudent(Student student) {
 		studentsList.add(student);
 		student.setAssignedMentor(null);
 	}
-	
+
 	//to remove student from mentor table
 	public void removeStudent(Student student) {
 		studentsList.remove(student);

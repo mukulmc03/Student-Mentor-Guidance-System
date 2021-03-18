@@ -1,6 +1,6 @@
 package com.app.FinalProjectv2.service;
 
-import javax.transaction.Transactional;
+import javax.transaction.Transactional; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,15 @@ public class AdminServiceImpl implements IAdminService {
 	@Autowired
 	private AdminRepository adminRepository;
 	
+	
+	//to add admin
 	@Override
 	public Admin addAdmin(Admin newAdmin) {
 		return adminRepository.save(newAdmin);
 	}
 
+	
+	//to get admin by Id
 	@Override
 	public Admin getAdminById(int id) {
 		return adminRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid Admin ID!") );

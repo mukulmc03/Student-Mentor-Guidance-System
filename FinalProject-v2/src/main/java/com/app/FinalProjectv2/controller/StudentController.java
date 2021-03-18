@@ -20,36 +20,36 @@ import com.app.FinalProjectv2.service.IStudentService;
 @RestController
 @RequestMapping("/students")
 public class StudentController {
-	
+
 	@Autowired
 	private IStudentService studentService;
-	
+
 	//register new student and its' address
-	@PostMapping
-	public ResponseEntity<String> registerStudent(@RequestBody StudentAddressDTO studentAddressDto) {
+	@PostMapping("/{courseId}")
+	public ResponseEntity<String> registerStudent(@PathVariable int courseId, @RequestBody StudentAddressDTO studentAddressDto) {
 		//System.out.println(studentAddressDto.getStudent() + ", " + studentAddressDto.getAddress());
-		return ResponseEntity.ok(studentService.registerStudent(studentAddressDto));
+		return ResponseEntity.ok(studentService.registerStudent(courseId, studentAddressDto));
 	}
-	
+
 	//get list of registered students
 	@GetMapping
 	public List<Student> getAllStudents(){
 		return studentService.getAllStudents();
 	}
-	
+
 	//get student by it's student ID
 	@GetMapping("/{studentId}")
 	public ResponseEntity<Student> getStudentById(@PathVariable int studentId){
 		Student student = studentService.getStudentById(studentId);
 		return ResponseEntity.ok(student);
 	}
-	
+
 	//update student
 	@PutMapping("/{studentId}")
 	public ResponseEntity<String> updateStudent(@PathVariable int studentId, @RequestBody Student newStudent){
 		return ResponseEntity.ok(studentService.updateStudent(studentId, newStudent));
 	}
-	
+
 	//delete student by it's student ID
 	@RequestMapping(value = "/{studentId}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteStudent(@PathVariable int studentId){

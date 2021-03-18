@@ -7,9 +7,9 @@ import com.app.FinalProjectv2.pojo.Mentor;
 import com.app.FinalProjectv2.pojo.Student;
 
 public interface IStudentService {
-	
+
 	// to register new Student 
-	public String registerStudent(StudentAddressDTO studentAddressDto);
+	public String registerStudent(int courseId, StudentAddressDTO studentAddressDto);
 
 	// to get Student details by Id
 	public Student getStudentById(int studentId);
@@ -22,7 +22,7 @@ public interface IStudentService {
 
 	// to update the course in table
 	public String updateStudent(int studentId, Student newStudent);
-	
+
 	//assign mentor to student and get list of assigned mentors in return
 	public Mentor assignMentorToStudent(int studentId);
 }

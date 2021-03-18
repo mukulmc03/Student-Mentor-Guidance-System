@@ -13,30 +13,33 @@ public class Query {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer queryId;
 
 	@Column 
 	private String question;
 
-	@Column 
+	@Column(nullable = true)
 	private String answer;
 
 	public Query() {
 		System.out.println("In Query's para-less Constructor!");
 	}
 
-	public Query(Integer id, String question, String answer) {
+	public Query(String question, String answer) {
 		super();
-		this.id = id;
 		this.question = question;
 		this.answer = answer;
 
 		System.out.println("In Query's parameterized Constructor!");
 	}
 
-	public Integer getId() { return id; }
+	public Integer getQueryId() {
+		return queryId;
+	}
 
-	public void setId(Integer id) { this.id = id; }
+	public void setQueryId(Integer queryId) {
+		this.queryId = queryId;
+	}
 
 	public String getQuestion() { return question; }
 
@@ -48,6 +51,6 @@ public class Query {
 
 	@Override
 	public String toString() {
-		return "Query [id=" + id + ", question=" + question + ", answer=" + answer + "]";
+		return "Query [id=" + queryId + ", question=" + question + ", answer=" + answer + "]";
 	}
 }

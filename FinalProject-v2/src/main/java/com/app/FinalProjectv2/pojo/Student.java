@@ -48,23 +48,23 @@ public class Student {
 	@Column(name="student_marks")
 	private float studentMarks;
 
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn(name="student_course_id")
 	@JsonIgnoreProperties("studentsList")
 	@JsonIgnore 
 	private Course assignedStudentCourse;
 
 	@OneToOne(cascade = CascadeType.ALL , orphanRemoval = true)
-	@JoinColumn(referencedColumnName = "address_id", insertable = true, updatable = true)
-	@JsonIgnore 
+	@JoinColumn(name = "student_address_id", referencedColumnName = "address_id", insertable = true, updatable = true)
+	@JsonIgnore
 	private Address studentAddress;
-	
+
 	@ManyToOne
 	@JoinColumn(name="assigned_mentor_id", nullable = true)
 	@JsonIgnoreProperties("studentsList")
 	@JsonIgnore
 	private Mentor assignedMentor;
-	
+
 	public Student() {
 		System.out.println("In Student's para-less Constructor!");
 	}
@@ -130,7 +130,7 @@ public class Student {
 
 	public void setStudentMarks(float studentMarks) { this.studentMarks =
 			studentMarks; }
-	
+
 	public Course getAssignedStudentCourse() {
 		return assignedStudentCourse;
 	}

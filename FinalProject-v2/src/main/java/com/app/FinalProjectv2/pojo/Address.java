@@ -16,12 +16,6 @@ public class Address {
 	@Column(name = "address_id", nullable = true)
 	private Integer addressId;
 
-	@Column(name = "permanent_add")
-	private String permanentAddress;
-
-	@Column(name = "current_add")
-	private String currentAddress;
-
 	@Column(name = "address_line1")
 	private String addressLine1;
 
@@ -29,7 +23,7 @@ public class Address {
 	private String addressLine2;
 
 	@Column
-	private String area;
+	private String area; 
 
 	@Column
 	private String city;
@@ -47,11 +41,9 @@ public class Address {
 		System.out.println("In Address's para-less Constructor!");
 	}
 
-	public Address(Integer id, String permanentAddress, String currentAddress, String addressLine1, String addressLine2,
+	public Address(String addressLine1, String addressLine2,
 			String area, String city, String state, String country, int pinCode) {
 		super();
-		this.permanentAddress = permanentAddress;
-		this.currentAddress = currentAddress;
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
 		this.area = area;
@@ -70,16 +62,6 @@ public class Address {
 	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
-
-	public String getPermanentAddress() { return permanentAddress; }
-
-	public void setPermanentAddress(String permanentAddress) {
-		this.permanentAddress = permanentAddress; }
-
-	public String getCurrentAddress() { return currentAddress; }
-
-	public void setCurrentAddress(String currentAddress) { this.currentAddress =
-			currentAddress; }
 
 	public String getAddressLine1() { return addressLine1; }
 
@@ -113,8 +95,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + addressId + ", permanentAddress=" + permanentAddress + ", currentAddress=" + currentAddress
-				+ ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", area=" + area + ", city="
+		return "Address [id=" + addressId + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", area=" + area + ", city="
 				+ city + ", state=" + state + ", country=" + country + ", pinCode=" + pinCode + "]";
 	}
 }
