@@ -13,58 +13,79 @@ public class Admin {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer adminId;
 
 	@Column
-	private String username;
+	private String adminEmail;
 
 	@Column
-	private String password;
+	private String adminPassword;
 
 	@Column
-	private LocalDate dob;
+	private LocalDate adminDob;
 
 	@Column
-	private Gender gender;
+	private Gender adminGender;
 	
 	public Admin() {
 		System.out.println("In Admin's para-less Constructor!");
 	}
 
-	public Admin(Integer id, String username, String password, LocalDate dob, Gender gender) {
+	public Admin(String adminEmail, String adminPassword, LocalDate adminDob, Gender adminGender) {
 		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.dob = dob;
-		this.gender = gender;
+		this.adminEmail = adminEmail;
+		this.adminPassword = adminPassword;
+		this.adminDob = adminDob;
+		this.adminGender = adminGender;
 		
 		System.out.println("In Admin's parameterized Constructor!");
 	}
 
-	public Integer getId() { return id; }
+	public Integer getAdminId() {
+		return adminId;
+	}
 
-	public void setId(Integer id) { this.id = id; }
+	public void setAdminId(Integer adminId) {
+		this.adminId = adminId;
+	}
 
-	public String getUsername() { return username; }
+	public String getAdminEmail() {
+		return adminEmail;
+	}
 
-	public void setUsername(String username) { this.username = username; }
+	public void setAdminEmail(String adminEmail) {
+		this.adminEmail = adminEmail;
+	}
 
-	public String getPassword() { return password; }
+	public String getAdminPassword() {
+		return adminPassword;
+	}
 
-	public void setPassword(String password) { this.password = password; }
+	public void setAdminPassword(String adminPassword) {
+		this.adminPassword = adminPassword;
+	}
 
-	public LocalDate getDob() { return dob; }
+	public LocalDate getAdminDob() {
+		return adminDob;
+	}
 
-	public void setDob(LocalDate dob) { this.dob = dob; }
+	public void setAdminDob(LocalDate adminDob) {
+		this.adminDob = adminDob;
+	}
 
-	public Gender getGender() { return gender; }
+	public Gender getAdminGender() {
+		return adminGender;
+	}
 
-	public void setGender(Gender gender) { this.gender = gender; }
+	public void setAdminGender(Gender adminGender) {
+		this.adminGender = adminGender;
+	}
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", username=" + username + ", password=" + password + ", dob=" + dob + ", gender="
-				+ gender + "]";
+		return "Admin [adminId=" + adminId + ", adminEmail=" + adminEmail + ", adminPassword=" + adminPassword
+				+ ", adminDob=" + adminDob + ", adminGender=" + adminGender + "]";
 	}
+
+	
 }
