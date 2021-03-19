@@ -39,7 +39,7 @@ public class MentorSericeImpl implements IMentorService {
 
 
 		//get mentor using mentorId
-		Mentor mentor = mentorRepository.findByMentorId(mentorId);
+		Mentor mentor = mentorRepository.findById(mentorId).orElseThrow(() -> new ResourceNotFoundException("No Mentor Found!"));
 
 		if(mentor == null)
 			throw new ResourceNotFoundException("Mentor not Registered!");
@@ -75,26 +75,26 @@ public class MentorSericeImpl implements IMentorService {
 		return "Marks updated successfully";
 	}
 
-	
+
 	//to update mentor
 	@Override
 	public Mentor updateMentor(int mentorId, MentorAddressDTO mentorAddressDto) {
-		
+
 		//get mentor to be updated
-		Mentor mentor = mentorRepository.findByMentorId(mentorId);
-		
+		Mentor mentor = mentorRepository.findById(mentorId).orElseThrow(() -> new ResourceNotFoundException("No Mentor Found!"));
+
 		//get newMentor from mentorAddreddDto
 		Mentor newMentor = mentorAddressDto.getMentor();
-		
+
 		//get newAddress from mentorAddressDto
 		Address newAddress = mentorAddressDto.getAddress();
-		
+
 		//saving newAddress in DB
 		addressRepository.save(newAddress);
-		
+
 		//assign newAddress to mentor
 		newMentor.setMentorAddress(newAddress);
-		
+
 		//setting all the fields of newMentor to mentor to be updated
 		mentor.setMentorFirstName(newMentor.getMentorFirstName());
 		mentor.setMentorLastName(newMentor.getMentorLastName());
@@ -107,13 +107,13 @@ public class MentorSericeImpl implements IMentorService {
 		mentor.setMentorJoinYear(newMentor.getMentorJoinYear());
 		mentor.setAvgRating(newMentor.getAvgRating());
 		mentor.setMentorAddress(newMentor.getMentorAddress());
-		
+
 		//saving mentor in DB
 		mentorRepository.save(mentor);
 		return mentor;
 	}
 
-	
+
 	//to get mentor by Id
 	@Override
 	public Mentor getMentorById(int mentorId) {
@@ -121,31 +121,39 @@ public class MentorSericeImpl implements IMentorService {
 		return mentor;
 	}
 
-	
+
 	//to delete mentor by Id
 	@Override
 	public String deleteMentorById(int mentorId) {
 
 		//to get list of students assigned to mentor with mentorId
-		@SuppressWarnings("unchecked")
-		List<Student> studentList = (List<Student>)getAssignedStudents(mentorId);
+		List<Student> studentList = studentRespository.getAssignedStudents(mentorId);
+		
+		//if no student is assigned to the mentor
+		if(studentList.isEmpty())
+			
+			//delete that mentor
+			mentorRepository.deleteById(mentorId);
+		
+		//if one or more students are assigned to mentor
+		else {
+			//iterating over the studentList
+			for(Student student : studentList) {
 
-		//iterating over the studentList
-		for(Student student : studentList) {
+				//setting mentor of each student to null
+				student.setAssignedMentor(null);
 
-			//setting mentor of each student to null
-			student.setAssignedMentor(null);
+				//saving student(with mentor : null) in DB
+				studentRespository.save(student);
+			}
 
-			//saving student(with mentor : null) in DB
-			studentRespository.save(student);
+			//deleting mentor with mentorId
+			mentorRepository.deleteById(mentorId);
 		}
-
-		//deleting mentor with mentorId
-		mentorRepository.deleteById(mentorId);
 		return "Mentor with Id: " + mentorId + " has been deleted successfuly";
 	}
 
-	
+
 	//to register mentor with address
 	@Override
 	public String registerMentor(int courseId, MentorAddressDTO mentorAddressDto) {
@@ -158,9 +166,9 @@ public class MentorSericeImpl implements IMentorService {
 
 		//get address object from mentorAddressDto
 		Address newAddress = mentorAddressDto.getAddress();
-		
+
 		System.out.println(newAddress);
- 
+
 		//store newAddress in DB
 		addressRepository.save(newAddress);
 

@@ -87,11 +87,23 @@ public class StudentServiceImpl implements IStudentService {
 		//get student to be deleted
 		Student student = studentRepository.findById(studentId)
 				.orElseThrow(() -> new ResourceNotFoundException("Student Id not present!"));
-		String msg = "Student with ID: " + student.getStudentId() + " deleted!";
 
-		//delete student from DB
-		studentRepository.delete(student);
-		return msg;
+		//get mentor assigned to student (to decrement currentBatch size)
+		Mentor mentor = student.getAssignedMentor();
+		
+		//check if mentor was assigned to the student or not
+		if(mentor == null)
+			
+			//delete student from DB
+			studentRepository.delete(student);
+		else {
+			//if mentor is assigned to the student : decrement currentBatch size of assigned mentor
+			mentor.setCurrentBatchSize(mentor.getCurrentBatchSize() - 1);
+			
+			//delete student from DB
+			studentRepository.delete(student);
+		}
+		return "Student with Id: " + studentId + " deleted!";
 	}
 
 	
