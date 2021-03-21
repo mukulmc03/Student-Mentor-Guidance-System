@@ -18,3 +18,4 @@ public interface CourseRepository extends JpaRepository<Course, Integer>{
 	@Query("select c from Course c join Mentor m on m.assignedMentorCourseId = c.courseId where m.mentorId=:mentorId ")
 	Course findCourseByMentorId(@Param("mentorId") int  mentorId);
 }
+ 

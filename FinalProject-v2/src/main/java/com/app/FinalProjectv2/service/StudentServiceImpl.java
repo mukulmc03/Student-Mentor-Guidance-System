@@ -152,6 +152,13 @@ public class StudentServiceImpl implements IStudentService {
 				.orElseThrow(() -> new ResourceNotFoundException("Student not registered!"));
 
 		System.out.println(student);
+		
+		//check if student has already assigned mentor or not
+		Mentor alreadyAssignedMentor = student.getAssignedMentor();
+		
+		//if mentor is assigned return that mentor only
+		if(alreadyAssignedMentor != null)
+			return alreadyAssignedMentor;
 
 		// get courseId of above student
 		int studentCourseId = student.getAssignedStudentCourse().getCourseId();

@@ -55,7 +55,7 @@ public class CourseServiceImpl implements ICourseService {
 	@Override
 	public Course getCourseByStudentId(int studentId) {
 		Course course = courseRepository.findCourseByStudentId(studentId);
-		if(course ==null)
+		if(course == null)
 			throw new ResourceNotFoundException("No course Assigned..!!");
 		return course;
 	}
@@ -64,7 +64,7 @@ public class CourseServiceImpl implements ICourseService {
 	@Override
 	public Course getCourseByMentorId(int mentorId) {
 		Course course = courseRepository.findCourseByMentorId(mentorId);
-		if(course ==null)
+		if(course == null)
 			throw new ResourceNotFoundException("No course Assigned..!!");
 		return course;
 	}
