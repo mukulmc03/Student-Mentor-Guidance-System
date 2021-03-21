@@ -63,4 +63,23 @@ public class StudentController {
 	public ResponseEntity<?> assignMentorToStudent(@PathVariable int studentId){
 		return ResponseEntity.ok(studentService.assignMentorToStudent(studentId));
 	}
+
+
+	// get address details of Student from StudentId
+	@GetMapping("/address/{studentId}")
+	public ResponseEntity<?> getAddressByStudentId(@PathVariable int studentId){
+		return ResponseEntity.ok(studentService.getAddressByStudentId(studentId));
+	}
+
+	// get Mentor details of selected Student from StudentId
+	@GetMapping("/mentor/{studentId}")
+	public ResponseEntity<?> getMentorsByStudentId(@PathVariable int studentId){
+		return ResponseEntity.ok(studentService.getMentorByStudentId(studentId));
+	}
+
+	// get Mentors'Address details of selected Student from StudentId  // note:- here we are getting address
+	@GetMapping("/mentor/address/{studentId}")
+	public ResponseEntity<?> getMentorsAddressByStudentId(@PathVariable int studentId){
+		return ResponseEntity.ok(studentService.getAssignedMentorsAddressByStudentId(studentId));
+	}
 }

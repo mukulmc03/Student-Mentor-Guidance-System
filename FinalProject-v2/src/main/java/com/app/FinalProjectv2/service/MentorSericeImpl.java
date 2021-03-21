@@ -184,5 +184,12 @@ public class MentorSericeImpl implements IMentorService {
 	}
 
 
-
+	//to get Address Details of Student By StudentId
+	@Override
+	public Address getAddressByMentorId(int mentorId) {
+		Address address = addressRepository.findAddressByMentorId(mentorId);
+		if(address == null)
+			throw new ResourceNotFoundException("No Mentor Address Found");
+		return address;
+	}
 }
