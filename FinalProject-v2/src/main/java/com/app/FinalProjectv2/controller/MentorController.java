@@ -2,6 +2,7 @@ package com.app.FinalProjectv2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.FinalProjectv2.dto.MentorAddressDTO;
 import com.app.FinalProjectv2.service.IMentorService;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/mentor")
 public class MentorController {
