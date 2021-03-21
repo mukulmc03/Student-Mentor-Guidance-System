@@ -64,7 +64,7 @@ public class StudentServiceImpl implements IStudentService {
 		return "Student registered with Student Id: " + newStudent.getStudentId() + " and Address Id: " + newStudent.getStudentAddress().getAddressId() + " and Course Id: " + newStudent.getAssignedStudentCourse().getCourseId() + "!";
 	}
 
-	
+
 	//get student using studentId
 	@Override
 	public Student getStudentById(int studentId) {
@@ -72,14 +72,14 @@ public class StudentServiceImpl implements IStudentService {
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid Student ID!"));
 	}
 
-	
+
 	//get list of all students
 	@Override
 	public List<Student> getAllStudents() {
 		return studentRepository.findAll();
 	}
 
-	
+
 	//delete student using studentId
 	@Override
 	public String deleteStudentById(int studentId) {
@@ -90,23 +90,23 @@ public class StudentServiceImpl implements IStudentService {
 
 		//get mentor assigned to student (to decrement currentBatch size)
 		Mentor mentor = student.getAssignedMentor();
-		
+
 		//check if mentor was assigned to the student or not
 		if(mentor == null)
-			
+
 			//delete student from DB
 			studentRepository.delete(student);
 		else {
 			//if mentor is assigned to the student : decrement currentBatch size of assigned mentor
 			mentor.setCurrentBatchSize(mentor.getCurrentBatchSize() - 1);
-			
+
 			//delete student from DB
 			studentRepository.delete(student);
 		}
 		return "Student with Id: " + studentId + " deleted!";
 	}
 
-	
+
 	//update student
 	@Override
 	public String updateStudent(int studentId, StudentAddressDTO studentAddressDto) {
@@ -140,7 +140,7 @@ public class StudentServiceImpl implements IStudentService {
 		return "Student at Id: " + studentId + " updated!";
 	}
 
-	
+
 	// assign mentor to student and get list of mentors in return
 	@Override
 	public Mentor assignMentorToStudent(int studentId) {
@@ -206,5 +206,40 @@ public class StudentServiceImpl implements IStudentService {
 			throw new ResourceNotFoundException("No Mentor available for Selected Course!");
 		else
 			return assignedMentor;
+	}
+
+
+	//to get Address Details of Student By StudentId
+	@Override
+	public Address getAddressByStudentId(int studentId) {
+		Address address = addressRepository.findAddressByStudentId(studentId);
+		if(address == null)
+			throw new ResourceNotFoundException("No Student Address Found");
+		return address;
+	} 
+	
+	
+	// to get Mentor of student by studentId
+	@Override
+	public Mentor getMentorByStudentId(int studentId) {
+		Mentor mentor = studentRepository.findMentorByStudentId(studentId);
+
+		return mentor;
+	}
+
+	
+	
+	// get Mentors'Address details of selected Student from StudentId  // note:- here we are getting address
+	@Override
+	public Address getAssignedMentorsAddressByStudentId(int studentId) {
+		// get assigned Mentor from Query
+		Mentor assignedMentor = studentRepository.findMentorByStudentId(studentId);
+		if(assignedMentor == null)
+			throw new ResourceNotFoundException("You Dont Have Any Mentor");
+		// get mentor Id from Assigned mentor
+		int mentorId = assignedMentor.getMentorId();
+		// get details of address of assignedMentor
+		Address mentorAddress = addressRepository.findAddressByMentorId(mentorId);
+		return mentorAddress;
 	}
 }

@@ -19,4 +19,10 @@ public interface ICourseService {
 
 	// to update the course in table
 	public Course updateCourse (int courseId, Course updatedCourse);
+
+	Course getCourseByStudentId(int studentId);
+
+	Course getCourseByMentorId(int mentorId);
+	
+	
 }

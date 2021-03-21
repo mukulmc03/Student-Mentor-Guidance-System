@@ -3,6 +3,7 @@ package com.app.FinalProjectv2.service;
 import java.util.List;
 
 import com.app.FinalProjectv2.dto.MentorAddressDTO;
+import com.app.FinalProjectv2.pojo.Address;
 import com.app.FinalProjectv2.pojo.Mentor; 
 
 public interface IMentorService {
@@ -23,4 +24,6 @@ public interface IMentorService {
 
 	//to register mentor with address and course
 	public String registerMentor(int courseId, MentorAddressDTO mentorAddressDto);
+
+	Address getAddressByMentorId(int mentorId);
 }

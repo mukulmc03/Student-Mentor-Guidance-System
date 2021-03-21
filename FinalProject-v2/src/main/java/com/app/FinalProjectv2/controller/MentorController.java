@@ -64,4 +64,11 @@ public class MentorController {
 	public ResponseEntity<String> registerMentor(@PathVariable int courseId ,@RequestBody MentorAddressDTO mentorAddressDto) {
 		return ResponseEntity.ok(mentorService.registerMentor(courseId, mentorAddressDto));
 	}
+
+
+	//get address details of Mentor from MentorId
+	@GetMapping("/address/{mentorId}")
+	public ResponseEntity<?> getAddressByStudentId(@PathVariable int mentorId){
+		return ResponseEntity.ok(mentorService.getAddressByMentorId(mentorId));
+	}
 }
