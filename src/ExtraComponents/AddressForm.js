@@ -1,7 +1,6 @@
 const AddressForm=()=>{
 
 return(
-
 <div className="container">
             <form className="form-horizontal address-form"  >
 
