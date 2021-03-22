@@ -1,38 +1,275 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.title {
+    text-align: center;
   }
+
+
+/*   .loginpage-body {
+   background-image: url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') fixed;
+  background-size: cover;
+  background-size: contain;
+} */
+
+body {
+   background: url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') fixed;
+  background-size: cover;
+  background-size: contain;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
+  /*==========================================  Main LOGIN form  =================================*/
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .loginform {
+   max-width:453px;
+   padding: 29px;
+   margin: 46px auto;
+   border-radius: 4.3em;
+   background-color: #dc5766;
+   border-style: solid;
+ 
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+/*==========================================  Student Signup form  =================================*/
+
+.student-signup-form {
+   max-width: 530px;
+   padding: 15px;
+   margin: 0 auto;
+   border-radius: 0.3em;
+   background-color: #f2f2f2;
+   margin-top: 43px;
+   margin-bottom: 155px;
 }
+
+.student-signup-form h2 { 
+   font-family: 'Open Sans' , sans-serif;
+   font-size: 30px;
+   font-weight: 600;
+   color: #000000;
+   margin-top: 5%;
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 4px;
+}
+
+
+
+ /*==========================================  Mentor SignUp form  =================================*/
+
+
+ .mentor-signup-form{
+   max-width: 530px;
+   padding: 15px;
+   margin: 0 auto;
+   border-radius: 0.3em;
+   background-color: #f2f2f2;
+   margin-top: 43px;
+   margin-bottom: 155px;
+ }
+
+ .mentor-signup-form h2  { 
+   font-family: 'Open Sans' , sans-serif;
+   font-size: 30px;
+   font-weight: 600;
+   color: #000000;
+   margin-top: 5%;
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 4px;
+}
+.mentor-signup-form h4{ 
+   font-family: 'Open Sans' , sans-serif;
+   font-size: 15px;
+   font-weight: 600;
+   color: #000000;
+   margin-top: 5%;
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 4px;
+}
+
+
+/*==========================================  New Course form  =================================*/
+
+.add-course-form{
+   max-width: 530px;
+   padding: 15px;
+   margin: 0 auto;
+   border-radius: 0.3em;
+   background-color: #f2f2f2;
+   margin-top: 43px;
+
+}
+
+.add-course-form h2 { 
+   font-family: 'Open Sans' , sans-serif;
+   font-size: 20px;
+   font-weight: 600;
+   color: #000000;
+   margin-top: 5%;
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 4px;
+}
+
+
+
+/*=================================================== NAVBAR ====================================== */
+.navbar-logo{
+   margin-left: -90px;
+}
+img, svg {
+   width: 61px;
+   vertical-align: bottom;
+}
+.navbar-middle-name{
+   color: white;
+   font-family: cursive;
+   font-size: larger;
+}
+.nav-link{
+   color: white;
+}
+
+
+/*============================================= FOOTER ========================================== */
+
+.footer{
+   position: absolute;
+   bottom : 0;
+   width :100%;
+   height : 50px;
+   background-color:black;
+   border-top: groove;
+   text-align: center;
+   color:white;
+   position: fixed;
+   
+}
+
+/*=============================================  HEADER  =============================================*/
+
+
+.header{
+   bottom: auto;
+   font-family: ui-monospace;
+   margin-top: 20px;
+   text-align: center;
+   text-decoration: underline;
+}
+
+
+/*=========================================   Roles   ================================================  */
+
+.role-img{
+   height: 350px;
+   width: 358px;
+   margin-left: 265px;
+   margin-top: 90px;
+}
+
+.student-role{
+   margin-top: 22px;
+   margin-left: 270px;
+   margin-bottom: -79px;
+   font-family: math;
+   text-decoration: underline;
+  }
+
+
+/*========================================= Dropdown Button from admin functions =================================*/
+
+.dropbutton {
+   background-color: #a54747;
+   color: white;
+   padding: 9px;
+   font-size: 16px;
+   border: none;
+   width: 166px;
+   margin-right: 31px;
+   font-family: math;
+   border-radius: 17px;
+ }
+ 
+ .dropdown {
+   position: relative;
+   display: inline-block;
+   margin-top: 14px;
+ }
+ 
+ .dropdown-content {
+   display: none;
+   position: absolute;
+   border-radius: 17px;
+   background-color: #a54747;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+   font-family: math;
+ }
+ 
+ .dropdown-content a {
+   color: rgb(255, 255, 255);
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+ }
+ 
+ .dropdown-content a:hover {background-color: #ddd;}
+ 
+ .dropdown:hover .dropdown-content {display: block;}
+ 
+ .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+
+ /*========================================= LOGOUT Button =================================*/
+
+ .admin-logout{
+   background-color: #0fec52;
+   color: rgb(3, 3, 3);
+   padding: 9px;
+   font-size: 16px;
+   border: none;
+   width: 140px;
+   border-radius: 17px;
+   font-family: math;
+   float: right;
+ }
+
+
+ /*========================================= Successfull Reg page =================================*/
+
+ .successfullRegCard {
+   margin-top: 80px;
+   height: 224px;
+   padding-bottom: 6px;
+   padding-left: 34px;
+   padding-top: 6px;
+   width: 531px;
+   margin-left: 500px;
+   box-shadow: darksalmon;
+}
+
+.successfullRegLines{
+margin-top: 40px;
+}
+
+ /*========================================= HomePage =================================*/
+
+.homeslide{width: 703px;
+    margin-right: 37px;
+    margin-top: 31px;
+    margin-left: auto;
+   }
+   .homepagecard1{
+      width: 263px;
+      width: 537px;
+      background-color: unset;
+      border: thin;
+   }
+   .homeloginbutton{
+      margin-right: 20px;
+   }
