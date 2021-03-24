@@ -40,7 +40,7 @@ public class Mentor {
 	private String mentorPassword;
 
 	@Column(name="mentor_mono")
-	private int mentorMoNo;
+	private String mentorMoNo;
 
 	@Column(name="batch_size")
 	private int batchSize;
@@ -79,7 +79,7 @@ public class Mentor {
 	}
 
 	public Mentor(Integer mentorId, String mentorFirstName, String mentorLastName, String mentorEmail, String mentorPassword,
-			int mentorMoNo, int batchSize, LocalDate mentorDob, Gender mentorGender, LocalDate mentorJoinYear,
+			String mentorMoNo, int batchSize, LocalDate mentorDob, Gender mentorGender, LocalDate mentorJoinYear,
 			float avgRating) {
 		super();
 		this.mentorId = mentorId;
@@ -125,9 +125,9 @@ public class Mentor {
 	public void setMentorPassword(String mentorPassword) { this.mentorPassword =
 			mentorPassword; }
 
-	public int getMentorMoNo() { return mentorMoNo; }
+	public String getMentorMoNo() { return mentorMoNo; }
 
-	public void setMentorMoNo(int mentorMoNo) { this.mentorMoNo = mentorMoNo; }
+	public void setMentorMoNo(String mentorMoNo) { this.mentorMoNo = mentorMoNo; }
 
 	public int getBatchSize() { return batchSize; }
 
@@ -136,7 +136,7 @@ public class Mentor {
 	public LocalDate getMentorDob() { return mentorDob; }
 
 	public void setMentorDob(LocalDate mentorDob) { this.mentorDob = mentorDob; }
-
+	
 	public Gender getMentorGender() { return mentorGender; }
 
 	public void setMentorGender(Gender mentorGender) { this.mentorGender =
