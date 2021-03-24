@@ -29,4 +29,8 @@ public interface StudentRepository extends JpaRepository<Student, Integer>{
 	// to get Mentor Details from studentId
 	@Query("select m from Mentor m join Student s on s.assignedMentor = m.mentorId where s.studentId=:studentId ")
 	public Mentor findMentorByStudentId(@Param("studentId") int  studentId);
+	
+	//to get student by email for validation
+	@Query("select s from Student s where s.studentEmail =:email")
+	public List<Student> findByEmail(@Param("email") String studentEmail);
 }

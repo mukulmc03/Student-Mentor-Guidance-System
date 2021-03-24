@@ -37,7 +37,7 @@ public class Student {
 	private String studentPassword;
 
 	@Column(name="student_mobile_no")
-	private String studetMobileNo;
+	private String studentMobileNo;
 
 	@Column(name="student_dob")
 	private LocalDate studentDob;
@@ -70,7 +70,7 @@ public class Student {
 	}
 
 	public Student(Integer studentId, String studentFirstName, String studentLastName, String studentEmail,
-			String studentPassword, String studetMobileNo, LocalDate studentDob, Gender studentGender,
+			String studentPassword, String studentMobileNo, LocalDate studentDob, Gender studentGender,
 			float studentMarks, Address studentAddress) {
 		super();
 		this.studentId = studentId;
@@ -78,7 +78,7 @@ public class Student {
 		this.studentLastName = studentLastName;
 		this.studentEmail = studentEmail;
 		this.studentPassword = studentPassword;
-		this.studetMobileNo = studetMobileNo;
+		this.studentMobileNo = studentMobileNo;
 		this.studentDob = studentDob;
 		this.studentGender = studentGender;
 		this.studentMarks = studentMarks;
@@ -111,10 +111,10 @@ public class Student {
 	public void setStudentPassword(String studentPassword) { this.studentPassword
 		= studentPassword; }
 
-	public String getStudetMobileNo() { return studetMobileNo; }
+	public String getStudentMobileNo() { return studentMobileNo; }
 
-	public void setStudetMobileNo(String studetMobileNo) { this.studetMobileNo =
-			studetMobileNo; }
+	public void setStudentMobileNo(String studentMobileNo) { this.studentMobileNo =
+			studentMobileNo; }
 
 	public LocalDate getStudentDob() { return studentDob; }
 
@@ -159,7 +159,7 @@ public class Student {
 	public String toString() {
 		return "Student [studentId=" + studentId + ", studentFirstName=" + studentFirstName + ", studentLastName="
 				+ studentLastName + ", studentEmail=" + studentEmail + ", studentPassword=" + studentPassword
-				+ ", studetMobileNo=" + studetMobileNo + ", studentDob=" + studentDob + ", studentGender="
+				+ ", studetMobileNo=" + studentMobileNo + ", studentDob=" + studentDob + ", studentGender="
 				+ studentGender + ", studentMarks=" + studentMarks + "]";
 	}
 }

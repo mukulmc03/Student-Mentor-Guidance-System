@@ -30,7 +30,13 @@ public class AdminServiceImpl implements IAdminService {
 	//to add admin
 	@Override
 	public Admin addAdmin(Admin newAdmin) {
-		return adminRepository.save(newAdmin);
+		
+		//get admin by email
+		Admin admin = adminRepository.findByEmail(newAdmin.getAdminEmail());
+		if(admin == null) 
+			return adminRepository.save(newAdmin);
+		else
+			throw new ResourceNotFoundException("Admin already exists with email id : " + newAdmin.getAdminEmail());
 	}
 
 	

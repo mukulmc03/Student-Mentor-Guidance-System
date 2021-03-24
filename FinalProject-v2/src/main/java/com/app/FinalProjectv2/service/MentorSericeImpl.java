@@ -86,30 +86,38 @@ public class MentorSericeImpl implements IMentorService {
 		//get newMentor from mentorAddreddDto
 		Mentor newMentor = mentorAddressDto.getMentor();
 
-		//get newAddress from mentorAddressDto
-		Address newAddress = mentorAddressDto.getAddress();
+		//to get mentor by email for validation
+		List<Mentor> mentorList = mentorRepository.findByEmail(newMentor.getMentorEmail());
 
-		//saving newAddress in DB
-		addressRepository.save(newAddress);
+		if(!mentorList.isEmpty())
+			throw new ResourceNotFoundException("Mentor with provided Email Id already exists");
 
-		//assign newAddress to mentor
-		newMentor.setMentorAddress(newAddress);
+		else {
+			//get newAddress from mentorAddressDto
+			Address newAddress = mentorAddressDto.getAddress();
 
-		//setting all the fields of newMentor to mentor to be updated
-		mentor.setMentorFirstName(newMentor.getMentorFirstName());
-		mentor.setMentorLastName(newMentor.getMentorLastName());
-		mentor.setMentorEmail(newMentor.getMentorEmail());
-		mentor.setMentorPassword(newMentor.getMentorPassword());
-		mentor.setMentorMoNo(newMentor.getMentorMoNo());
-		mentor.setBatchSize(newMentor.getBatchSize());
-		mentor.setMentorDob(newMentor.getMentorDob());
-		mentor.setMentorGender(newMentor.getMentorGender());
-		mentor.setMentorJoinYear(newMentor.getMentorJoinYear());
-		mentor.setAvgRating(newMentor.getAvgRating());
-		mentor.setMentorAddress(newMentor.getMentorAddress());
+			//saving newAddress in DB
+			addressRepository.save(newAddress);
 
-		//saving mentor in DB
-		mentorRepository.save(mentor);
+			//assign newAddress to mentor
+			newMentor.setMentorAddress(newAddress);
+
+			//setting all the fields of newMentor to mentor to be updated
+			mentor.setMentorFirstName(newMentor.getMentorFirstName());
+			mentor.setMentorLastName(newMentor.getMentorLastName());
+			mentor.setMentorEmail(newMentor.getMentorEmail());
+			mentor.setMentorPassword(newMentor.getMentorPassword());
+			mentor.setMentorMoNo(newMentor.getMentorMoNo());
+			mentor.setBatchSize(newMentor.getBatchSize());
+			mentor.setMentorDob(newMentor.getMentorDob());
+			mentor.setMentorGender(newMentor.getMentorGender());
+			mentor.setMentorJoinYear(newMentor.getMentorJoinYear());
+			mentor.setAvgRating(newMentor.getAvgRating());
+			mentor.setMentorAddress(newMentor.getMentorAddress());
+
+			//saving mentor in DB
+			mentorRepository.save(mentor);
+		}
 		return mentor;
 	}
 
@@ -128,13 +136,13 @@ public class MentorSericeImpl implements IMentorService {
 
 		//to get list of students assigned to mentor with mentorId
 		List<Student> studentList = studentRespository.getAssignedStudents(mentorId);
-		
+
 		//if no student is assigned to the mentor
 		if(studentList.isEmpty())
-			
+
 			//delete that mentor
 			mentorRepository.deleteById(mentorId);
-		
+
 		//if one or more students are assigned to mentor
 		else {
 			//iterating over the studentList

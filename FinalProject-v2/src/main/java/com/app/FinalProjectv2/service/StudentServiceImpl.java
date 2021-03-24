@@ -46,20 +46,26 @@ public class StudentServiceImpl implements IStudentService {
 		//get student object from studentAddressDto
 		Student newStudent = studentAddressDto.getStudent();
 
-		//get address object from studentAddressDto 
-		Address newAddress = studentAddressDto.getAddress();
+		//to get student by email for validation
+		List<Student> studentList = studentRepository.findByEmail(newStudent.getStudentEmail());
+		if( !studentList.isEmpty())
+			throw new ResourceNotFoundException("Student with provided Email Id already exists");
+		else {
+			//get address object from studentAddressDto 
+			Address newAddress = studentAddressDto.getAddress();
 
-		//store newAddress in DB
-		addressRepository.save(newAddress);
+			//store newAddress in DB
+			addressRepository.save(newAddress);
 
-		//assign newAddress to newStudent
-		newStudent.setStudentAddress(newAddress);
+			//assign newAddress to newStudent
+			newStudent.setStudentAddress(newAddress);
 
-		//assign course to student
-		newStudent.setAssignedStudentCourse(course);
+			//assign course to student
+			newStudent.setAssignedStudentCourse(course);
 
-		//store newStudent in DB
-		studentRepository.save(newStudent);
+			//store newStudent in DB
+			studentRepository.save(newStudent);
+		}
 
 		return "Student registered with Student Id: " + newStudent.getStudentId() + " and Address Id: " + newStudent.getStudentAddress().getAddressId() + " and Course Id: " + newStudent.getAssignedStudentCourse().getCourseId() + "!";
 	}
@@ -130,7 +136,7 @@ public class StudentServiceImpl implements IStudentService {
 		student.setStudentEmail(newStudent.getStudentEmail());
 		student.setStudentPassword(newStudent.getStudentPassword());
 		student.setStudentDob(newStudent.getStudentDob());
-		student.setStudetMobileNo(newStudent.getStudetMobileNo());
+		student.setStudentMobileNo(newStudent.getStudentMobileNo()); 
 		student.setStudentGender(newStudent.getStudentGender());
 		student.setStudentMarks(newStudent.getStudentMarks());
 		student.setStudentAddress(newStudent.getStudentAddress());
@@ -152,10 +158,10 @@ public class StudentServiceImpl implements IStudentService {
 				.orElseThrow(() -> new ResourceNotFoundException("Student not registered!"));
 
 		System.out.println(student);
-		
+
 		//check if student has already assigned mentor or not
 		Mentor alreadyAssignedMentor = student.getAssignedMentor();
-		
+
 		//if mentor is assigned return that mentor only
 		if(alreadyAssignedMentor != null)
 			return alreadyAssignedMentor;
@@ -224,8 +230,8 @@ public class StudentServiceImpl implements IStudentService {
 			throw new ResourceNotFoundException("No Student Address Found");
 		return address;
 	} 
-	
-	
+
+
 	// to get Mentor of student by studentId
 	@Override
 	public Mentor getMentorByStudentId(int studentId) {
@@ -234,8 +240,8 @@ public class StudentServiceImpl implements IStudentService {
 		return mentor;
 	}
 
-	
-	
+
+
 	// get Mentors'Address details of selected Student from StudentId  // note:- here we are getting address
 	@Override
 	public Address getAssignedMentorsAddressByStudentId(int studentId) {
