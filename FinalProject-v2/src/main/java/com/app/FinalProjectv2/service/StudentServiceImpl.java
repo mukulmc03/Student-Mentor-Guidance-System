@@ -124,25 +124,32 @@ public class StudentServiceImpl implements IStudentService {
 		//get student from studentAddressDto
 		Student newStudent = studentAddressDto.getStudent();
 
-		//get address from studentAddressDto
-		Address newAddress = studentAddressDto.getAddress();
+		//to get student by email for validation
+		List<Student> studentList = studentRepository.findByEmail(newStudent.getStudentEmail());
+		if( !studentList.isEmpty())
+			throw new ResourceNotFoundException("Student with provided Email Id already exists");
+		else {
 
-		//assign newAddress to newStudent
-		newStudent.setStudentAddress(newAddress);
+			//get address from studentAddressDto
+			Address newAddress = studentAddressDto.getAddress();
 
-		//assign other fields
-		student.setStudentFirstName(newStudent.getStudentFirstName());
-		student.setStudentLastName(newStudent.getStudentLastName());
-		student.setStudentEmail(newStudent.getStudentEmail());
-		student.setStudentPassword(newStudent.getStudentPassword());
-		student.setStudentDob(newStudent.getStudentDob());
-		student.setStudentMobileNo(newStudent.getStudentMobileNo()); 
-		student.setStudentGender(newStudent.getStudentGender());
-		student.setStudentMarks(newStudent.getStudentMarks());
-		student.setStudentAddress(newStudent.getStudentAddress());
+			//assign newAddress to newStudent
+			newStudent.setStudentAddress(newAddress);
 
-		//save student in DB
-		studentRepository.save(student);
+			//assign other fields
+			student.setStudentFirstName(newStudent.getStudentFirstName());
+			student.setStudentLastName(newStudent.getStudentLastName());
+			student.setStudentEmail(newStudent.getStudentEmail());
+			student.setStudentPassword(newStudent.getStudentPassword());
+			student.setStudentDob(newStudent.getStudentDob());
+			student.setStudentMobileNo(newStudent.getStudentMobileNo()); 
+			student.setStudentGender(newStudent.getStudentGender());
+			student.setStudentMarks(newStudent.getStudentMarks());
+			student.setStudentAddress(newStudent.getStudentAddress());
+
+			//save student in DB
+			studentRepository.save(student);
+		}
 		return "Student at Id: " + studentId + " updated!";
 	}
 

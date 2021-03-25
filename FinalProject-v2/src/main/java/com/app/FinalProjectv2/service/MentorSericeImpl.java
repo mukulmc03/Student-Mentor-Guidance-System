@@ -86,13 +86,15 @@ public class MentorSericeImpl implements IMentorService {
 		//get newMentor from mentorAddreddDto
 		Mentor newMentor = mentorAddressDto.getMentor();
 
-		//to get mentor by email for validation
-		List<Mentor> mentorList = mentorRepository.findByEmail(newMentor.getMentorEmail());
-
-		if(!mentorList.isEmpty())
-			throw new ResourceNotFoundException("Mentor with provided Email Id already exists");
-
-		else {
+		/*
+		 * //to get mentor by email for validation List<Mentor> mentorList =
+		 * mentorRepository.findByEmail(newMentor.getMentorEmail());
+		 * 
+		 * if(!mentorList.isEmpty()) throw new
+		 * ResourceNotFoundException("Mentor with provided Email Id already exists");
+		 * 
+		 * else {
+		 */
 			//get newAddress from mentorAddressDto
 			Address newAddress = mentorAddressDto.getAddress();
 
@@ -117,7 +119,7 @@ public class MentorSericeImpl implements IMentorService {
 
 			//saving mentor in DB
 			mentorRepository.save(mentor);
-		}
+		//}
 		return mentor;
 	}
 
@@ -172,22 +174,31 @@ public class MentorSericeImpl implements IMentorService {
 		//get mentor object from mentorAddressDto
 		Mentor newMentor = mentorAddressDto.getMentor();
 
-		//get address object from mentorAddressDto
-		Address newAddress = mentorAddressDto.getAddress();
+		//to get mentor by email for validation
+		List<Mentor> mentorList = mentorRepository.findByEmail(newMentor.getMentorEmail());
 
-		System.out.println(newAddress);
+		if(!mentorList.isEmpty())
+			throw new ResourceNotFoundException("Mentor with provided Email Id already exists");
 
-		//store newAddress in DB
-		addressRepository.save(newAddress);
+		else {
 
-		//assign newAddress to newMentor
-		newMentor.setMentorAddress(newAddress);
+			//get address object from mentorAddressDto
+			Address newAddress = mentorAddressDto.getAddress();
 
-		//set newCourse(stored in DB) to newMentor
-		newMentor.setAssignedMentorCourseId(newCourse);
+			System.out.println(newAddress);
 
-		//store newMentor in DB
-		mentorRepository.save(newMentor);
+			//store newAddress in DB
+			addressRepository.save(newAddress);
+
+			//assign newAddress to newMentor
+			newMentor.setMentorAddress(newAddress);
+
+			//set newCourse(stored in DB) to newMentor
+			newMentor.setAssignedMentorCourseId(newCourse);
+
+			//store newMentor in DB
+			mentorRepository.save(newMentor);
+		}
 		return "Mentor registered with Mentor Id: " + newMentor.getMentorId() + " and Address Id: " + newMentor.getMentorAddress().getAddressId() + " !";
 	}
 
