@@ -1,9 +1,6 @@
-
-
 .title {
-    text-align: center;
-  }
-
+  text-align: center;
+}
 
 /*   .loginpage-body {
    background-image: url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') fixed;
@@ -12,264 +9,328 @@
 } */
 
 body {
-   background: url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') fixed;
+  background-color: #e8cebf;
   background-size: cover;
   background-size: contain;
 }
 
+/*==========================================  Main LOGIN form  =================================*/
 
-  /*==========================================  Main LOGIN form  =================================*/
-
-  .loginform {
-   max-width:453px;
-   padding: 29px;
-   margin: 46px auto;
-   border-radius: 4.3em;
-   background-color: #dc5766;
-   border-style: solid;
- 
-  }
-
+.loginform {
+  max-width: 453px;
+  padding: 29px;
+  margin: 46px auto;
+  border-radius: 4.3em;
+  background-color: #dc5766;
+  border-style: solid;
+}
 
 /*==========================================  Student Signup form  =================================*/
 
 .student-signup-form {
-   max-width: 530px;
-   padding: 15px;
-   margin: 0 auto;
-   border-radius: 0.3em;
-   background-color: #f2f2f2;
-   margin-top: 43px;
-   margin-bottom: 155px;
+  max-width: 530px;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: 0.3em;
+  background-color: #f2f2f2;
+  margin-top: 43px;
+  margin-bottom: 155px;
 }
 
-.student-signup-form h2 { 
-   font-family: 'Open Sans' , sans-serif;
-   font-size: 30px;
-   font-weight: 600;
-   color: #000000;
-   margin-top: 5%;
-   text-align: center;
-   text-transform: uppercase;
-   letter-spacing: 4px;
+.student-signup-form h2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #000000;
+  margin-top: 5%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
+/*==========================================  Mentor SignUp form  =================================*/
 
-
- /*==========================================  Mentor SignUp form  =================================*/
-
-
- .mentor-signup-form{
-   max-width: 530px;
-   padding: 15px;
-   margin: 0 auto;
-   border-radius: 0.3em;
-   background-color: #f2f2f2;
-   margin-top: 43px;
-   margin-bottom: 155px;
- }
-
- .mentor-signup-form h2  { 
-   font-family: 'Open Sans' , sans-serif;
-   font-size: 30px;
-   font-weight: 600;
-   color: #000000;
-   margin-top: 5%;
-   text-align: center;
-   text-transform: uppercase;
-   letter-spacing: 4px;
-}
-.mentor-signup-form h4{ 
-   font-family: 'Open Sans' , sans-serif;
-   font-size: 15px;
-   font-weight: 600;
-   color: #000000;
-   margin-top: 5%;
-   text-align: center;
-   text-transform: uppercase;
-   letter-spacing: 4px;
+.mentor-signup-form {
+  max-width: 530px;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: 0.3em;
+  background-color: #f2f2f2;
+  margin-top: 43px;
+  margin-bottom: 155px;
 }
 
+.mentor-signup-form h2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #000000;
+  margin-top: 5%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+.mentor-signup-form h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+  margin-top: 5%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
 
 /*==========================================  New Course form  =================================*/
 
-.add-course-form{
-   max-width: 530px;
-   padding: 15px;
-   margin: 0 auto;
-   border-radius: 0.3em;
-   background-color: #f2f2f2;
-   margin-top: 43px;
-
+.add-course-form {
+  max-width: 530px;
+  padding: 15px;
+  margin: 0 auto;
+  border-radius: 0.3em;
+  background-color: #f2f2f2;
+  margin-top: 43px;
 }
 
-.add-course-form h2 { 
-   font-family: 'Open Sans' , sans-serif;
-   font-size: 20px;
-   font-weight: 600;
-   color: #000000;
-   margin-top: 5%;
-   text-align: center;
-   text-transform: uppercase;
-   letter-spacing: 4px;
+.add-course-form h2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  margin-top: 5%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
-
-
 
 /*=================================================== NAVBAR ====================================== */
-.navbar-logo{
-   margin-left: -90px;
+.navbar-logo {
+  margin-left: -90px;
 }
-img, svg {
-   width: 61px;
-   vertical-align: bottom;
+img {
+  width: 61px;
+  vertical-align: bottom;
 }
-.navbar-middle-name{
-   color: white;
-   font-family: cursive;
-   font-size: larger;
+svg {
+  width: 61px;
+  vertical-align: bottom;
 }
-.nav-link{
-   color: white;
+.navbar-middle-name {
+  color: white;
+  font-family: cursive;
+  font-size: larger;
 }
-
+.nav-link {
+  color: white;
+}
 
 /*============================================= FOOTER ========================================== */
 
-.footer{
-   position: absolute;
-   bottom : 0;
-   width :100%;
-   height : 50px;
-   background-color:black;
-   border-top: groove;
-   text-align: center;
-   color:white;
-   position: fixed;
-   
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: black;
+  border-top: groove;
+  text-align: center;
+  color: white;
+  position: fixed;
 }
 
 /*=============================================  HEADER  =============================================*/
 
-
-.header{
-   bottom: auto;
-   font-family: ui-monospace;
-   margin-top: 20px;
-   text-align: center;
-   text-decoration: underline;
+.header {
+  bottom: auto;
+  font-family: ui-monospace;
+  margin-top: 20px;
+  text-align: center;
+  text-decoration: underline;
 }
-
 
 /*=========================================   Roles   ================================================  */
 
-.role-img{
-   height: 350px;
-   width: 358px;
-   margin-left: 265px;
-   margin-top: 90px;
+.role-img {
+  height: 350px;
+  width: 358px;
+  margin-left: 265px;
+  margin-top: 90px;
 }
 
-.student-role{
-   margin-top: 22px;
-   margin-left: 270px;
-   margin-bottom: -79px;
-   font-family: math;
-   text-decoration: underline;
-  }
-
+.student-role {
+  margin-top: 22px;
+  margin-left: 270px;
+  margin-bottom: -79px;
+  font-family: math;
+  text-decoration: underline;
+}
 
 /*========================================= Dropdown Button from admin functions =================================*/
 
 .dropbutton {
-   background-color: #a54747;
-   color: white;
-   padding: 9px;
-   font-size: 16px;
-   border: none;
-   width: 166px;
-   margin-right: 31px;
-   font-family: math;
-   border-radius: 17px;
- }
- 
- .dropdown {
-   position: relative;
-   display: inline-block;
-   margin-top: 14px;
- }
- 
- .dropdown-content {
-   display: none;
-   position: absolute;
-   border-radius: 17px;
-   background-color: #a54747;
-   min-width: 160px;
-   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-   z-index: 1;
-   font-family: math;
- }
- 
- .dropdown-content a {
-   color: rgb(255, 255, 255);
-   padding: 12px 16px;
-   text-decoration: none;
-   display: block;
- }
- 
- .dropdown-content a:hover {background-color: #ddd;}
- 
- .dropdown:hover .dropdown-content {display: block;}
- 
- .dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-
-
- /*========================================= LOGOUT Button =================================*/
-
- .admin-logout{
-   background-color: #0fec52;
-   color: rgb(3, 3, 3);
-   padding: 9px;
-   font-size: 16px;
-   border: none;
-   width: 140px;
-   border-radius: 17px;
-   font-family: math;
-   float: right;
- }
-
-
- /*========================================= Successfull Reg page =================================*/
-
- .successfullRegCard {
-   margin-top: 80px;
-   height: 224px;
-   padding-bottom: 6px;
-   padding-left: 34px;
-   padding-top: 6px;
-   width: 531px;
-   margin-left: 500px;
-   box-shadow: darksalmon;
+  background-color: #a54747;
+  color: white;
+  padding: 9px;
+  font-size: 16px;
+  border: none;
+  width: 166px;
+  margin-right: 31px;
+  font-family: math;
+  border-radius: 17px;
 }
 
-.successfullRegLines{
-margin-top: 40px;
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: 14px;
 }
 
- /*========================================= HomePage =================================*/
+.dropdown-content {
+  display: none;
+  position: absolute;
+  border-radius: 17px;
+  background-color: #a54747;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-family: math;
+}
 
-.homeslide{width: 703px;
-    margin-right: 37px;
-    margin-top: 31px;
-    margin-left: auto;
-   }
-   .homepagecard1{
-      width: 263px;
-      width: 537px;
-      background-color: unset;
-      border: thin;
-   }
-   .homeloginbutton{
-      margin-right: 20px;
-   }
+.dropdown-content a {
+  color: rgb(255, 255, 255);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/*========================================= LOGOUT Button =================================*/
+
+.admin-logout {
+  background-color: #0fec52;
+  color: rgb(3, 3, 3);
+  padding: 9px;
+  font-size: 16px;
+  border: none;
+  width: 140px;
+  border-radius: 17px;
+  font-family: math;
+  float: right;
+}
+
+/*========================================= Successfull Reg page =================================*/
+
+.successfullRegCard {
+  margin-top: 80px;
+  height: 310px;
+  padding-bottom: 6px;
+  padding-left: 34px;
+  padding-top: 6px;
+  width: 531px;
+  margin-left: 500px;
+  box-shadow: darksalmon;
+  border-radius: 27px;
+}
+
+.successfullRegLines {
+  margin-top: 40px;
+}
+
+/*========================================= courseCard deatils =================================*/
+
+.coursedetailcard {
+  margin-top: 80px;
+  height: 310px;
+  padding-bottom: 6px;
+  padding-left: 34px;
+  padding-top: 6px;
+  width: 531px;
+  margin-left: 384px;
+  box-shadow: darksalmon;
+  border-radius: 27px;
+}
+
+.successfullRegLines {
+  margin-top: 40px;
+}
+
+/*========================================= HomePage =================================*/
+
+.homeslide {
+  width: 703px;
+  margin-right: 37px;
+  margin-top: 31px;
+  margin-left: auto;
+}
+.homepagecard1 {
+  width: 263px;
+  width: 537px;
+  background-color: unset;
+  border: thin;
+}
+.homeloginbutton {
+  margin-right: 20px;
+}
+
+/*========================================= profile card  ===============================*/
+
+.profilecard1 {
+  margin-top: 60px;
+  height: 362px;
+  padding-bottom: 5px;
+  padding-left: 34px;
+  padding-top: 6px;
+  width: 459px;
+  margin-left: 170px;
+  border-radius: 27px;
+}
+
+.profilecard2 {
+  margin-top: -378px;
+  height: 362px;
+  padding-bottom: 5px;
+  padding-left: 34px;
+  padding-top: 6px;
+  width: 459px;
+  margin-left: 716px;
+  border-radius: 27px;
+}
+
+/*========================================= Mentor Details card  ===============================*/
+.nomentortext {
+  font-family: cursive;
+}
+/*========================================= Succesfull Updation card  ===============================*/
+.successupdationcard {
+  width: 392px;
+  margin-top: 107px;
+  padding-left: 56px;
+  padding-top: 50px;
+  margin-left: 441px;
+  border-radius: 27px;
+  height: 165px;
+}
+/*========================================= Admin profile card  ===============================*/
+.adminprofilecard {
+  margin-top: 80px;
+  height: 281px;
+  padding-bottom: 6px;
+  padding-left: 8px;
+  padding-top: 6px;
+  width: 496px;
+  margin-left: 401px;
+  box-shadow: darksalmon;
+  text-align: center;
+  border-radius: 27px;
+}
