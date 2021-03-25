@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.app</groupId>
-	<artifactId>FinalProject-v2</artifactId>
+	<artifactId>SMG-System-Backend-SpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>FinalProject-v2</name>
-	<description>Version 2 of Final Project</description>
+	<name>SMG-System-Backend-SpringBoot</name>
+	<description>SpringBoot backend API</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
