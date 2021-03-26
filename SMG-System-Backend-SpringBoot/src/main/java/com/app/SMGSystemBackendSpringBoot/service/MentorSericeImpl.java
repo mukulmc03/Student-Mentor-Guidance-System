@@ -211,4 +211,10 @@ public class MentorSericeImpl implements IMentorService {
 			throw new ResourceNotFoundException("No Mentor Address Found");
 		return address;
 	}
+
+
+	@Override
+	public List<Mentor> getAllMentors() {
+		return mentorRepository.findAll();
+	}
 }
