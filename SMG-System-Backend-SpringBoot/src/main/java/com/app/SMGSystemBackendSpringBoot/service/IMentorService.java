@@ -26,4 +26,6 @@ public interface IMentorService {
 	public String registerMentor(int courseId, MentorAddressDTO mentorAddressDto);
 
 	Address getAddressByMentorId(int mentorId);
+	
+	List<Mentor> getAllMentors();
 }

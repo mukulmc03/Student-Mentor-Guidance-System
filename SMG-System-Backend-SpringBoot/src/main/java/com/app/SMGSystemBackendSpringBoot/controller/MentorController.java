@@ -71,4 +71,9 @@ public class MentorController {
 	public ResponseEntity<?> getAddressByStudentId(@PathVariable int mentorId){
 		return ResponseEntity.ok(mentorService.getAddressByMentorId(mentorId));
 	}
+	
+	@GetMapping
+	public ResponseEntity<?> getAllMentors(){
+		return ResponseEntity.ok(mentorService.getAllMentors());
+	}
 }
