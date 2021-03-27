@@ -78,48 +78,44 @@ public class MentorSericeImpl implements IMentorService {
 
 	//to update mentor
 	@Override
-	public Mentor updateMentor(int mentorId, MentorAddressDTO mentorAddressDto) {
+	public Mentor updateMentor(int mentorId, Mentor newMentor) {
 
 		//get mentor to be updated
-		Mentor mentor = mentorRepository.findById(mentorId).orElseThrow(() -> new ResourceNotFoundException("No Mentor Found!"));
-
-		//get newMentor from mentorAddreddDto
-		Mentor newMentor = mentorAddressDto.getMentor();
-
+		Mentor mentor = mentorRepository.findById(mentorId).orElseThrow(() -> new ResourceNotFoundException("Mentor Does Not Exist"));
 		/*
-		 * //to get mentor by email for validation List<Mentor> mentorList =
-		 * mentorRepository.findByEmail(newMentor.getMentorEmail());
-		 * 
-		 * if(!mentorList.isEmpty()) throw new
-		 * ResourceNotFoundException("Mentor with provided Email Id already exists");
-		 * 
-		 * else {
+		 * String mentorEmail = newMentor.getMentorEmail(); List<Mentor>
+		 * listOfAvailableMentors = mentorRepository.findByEmail(mentorEmail);
+		 * System.out.println("List of Avilable Mentors:-" + listOfAvailableMentors);
+		 * if(!listOfAvailableMentors.isEmpty()) throw new
+		 * ResourceNotFoundException("User Already Exists!");
 		 */
-			//get newAddress from mentorAddressDto
-			Address newAddress = mentorAddressDto.getAddress();
+		//get newMentor from mentorAddreddDto
+		//Mentor newMentor = mentorAddressDto.getMentor();
+		
+		//get newAddress from mentorAddressDto
+		//Address newAddress = mentorAddressDto.getAddress();
+		
+		//saving newAddress in DB
+	//	addressRepository.save(newAddress);
+		
+		//assign newAddress to mentor
+		//newMentor.setMentorAddress(newAddress);
+		
+		//setting all the fields of newMentor to mentor to be updated
+		mentor.setMentorFirstName(newMentor.getMentorFirstName());
+		mentor.setMentorLastName(newMentor.getMentorLastName());
+		mentor.setMentorEmail(newMentor.getMentorEmail());
+		mentor.setMentorPassword(newMentor.getMentorPassword());
+		mentor.setMentorMoNo(newMentor.getMentorMoNo());
+		mentor.setMentorDob(newMentor.getMentorDob());
+		mentor.setMentorGender(newMentor.getMentorGender());
+		mentor.setMentorJoinYear(newMentor.getMentorJoinYear());
+		mentor.setAvgRating(newMentor.getAvgRating());
 
-			//saving newAddress in DB
-			addressRepository.save(newAddress);
-
-			//assign newAddress to mentor
-			newMentor.setMentorAddress(newAddress);
-
-			//setting all the fields of newMentor to mentor to be updated
-			mentor.setMentorFirstName(newMentor.getMentorFirstName());
-			mentor.setMentorLastName(newMentor.getMentorLastName());
-			mentor.setMentorEmail(newMentor.getMentorEmail());
-			mentor.setMentorPassword(newMentor.getMentorPassword());
-			mentor.setMentorMoNo(newMentor.getMentorMoNo());
-			mentor.setBatchSize(newMentor.getBatchSize());
-			mentor.setMentorDob(newMentor.getMentorDob());
-			mentor.setMentorGender(newMentor.getMentorGender());
-			mentor.setMentorJoinYear(newMentor.getMentorJoinYear());
-			mentor.setAvgRating(newMentor.getAvgRating());
-			mentor.setMentorAddress(newMentor.getMentorAddress());
-
-			//saving mentor in DB
-			mentorRepository.save(mentor);
-		//}
+		
+		
+		//saving mentor in DB
+		mentorRepository.save(mentor);
 		return mentor;
 	}
 

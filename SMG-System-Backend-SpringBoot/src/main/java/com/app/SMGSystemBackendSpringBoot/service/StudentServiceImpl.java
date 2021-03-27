@@ -115,43 +115,26 @@ public class StudentServiceImpl implements IStudentService {
 
 	//update student
 	@Override
-	public String updateStudent(int studentId, StudentAddressDTO studentAddressDto) {
+	public String updateStudent(int studentId, Student newStudent) {
 
-		//get student to be updated
 		Student student = studentRepository.findById(studentId)
 				.orElseThrow(() -> new ResourceNotFoundException("Student Id : " + studentId + " does not exists!"));
+		/*
+		 * String studentEmail = newStudent.getStudentEmail(); List<Student>
+		 * listOfStudent = studentRepository.findByEmail(studentEmail); // if user
+		 * already exist then throw exception if(!listOfStudent.isEmpty()) throw new
+		 * ResourceNotFoundException("User Already Exist..!!");
+		 */
 
-		//get student from studentAddressDto
-		Student newStudent = studentAddressDto.getStudent();
-
-		//to get student by email for validation
-		List<Student> studentList = studentRepository.findByEmail(newStudent.getStudentEmail());
-		if( !studentList.isEmpty())
-			throw new ResourceNotFoundException("Student with provided Email Id already exists");
-		else {
-
-			//get address from studentAddressDto
-			Address newAddress = studentAddressDto.getAddress();
-
-			//assign newAddress to newStudent
-			newStudent.setStudentAddress(newAddress);
-
-			//assign other fields
-			student.setStudentFirstName(newStudent.getStudentFirstName());
-			student.setStudentLastName(newStudent.getStudentLastName());
-			student.setStudentEmail(newStudent.getStudentEmail());
-			student.setStudentPassword(newStudent.getStudentPassword());
-			student.setStudentDob(newStudent.getStudentDob());
-			student.setStudentMobileNo(newStudent.getStudentMobileNo()); 
-			student.setStudentGender(newStudent.getStudentGender());
-			student.setStudentMarks(newStudent.getStudentMarks());
-			student.setStudentAddress(newStudent.getStudentAddress());
-
-			//save student in DB
-			studentRepository.save(student);
-		}
-		return "Student at Id: " + studentId + " updated!";
-	}
+		student.setStudentFirstName(newStudent.getStudentFirstName());
+		student.setStudentLastName(newStudent.getStudentLastName());
+		student.setStudentEmail(newStudent.getStudentEmail());
+		student.setStudentPassword(newStudent.getStudentPassword());
+		student.setStudentDob(newStudent.getStudentDob());
+		student.setStudentMobileNo(newStudent.getStudentMobileNo());
+		student.setStudentGender(newStudent.getStudentGender());
+		studentRepository.save(student);
+		return "Student updated!";	}
 
 
 	// assign mentor to student and get list of mentors in return
