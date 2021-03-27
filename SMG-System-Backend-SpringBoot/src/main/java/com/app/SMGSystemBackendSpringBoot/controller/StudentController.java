@@ -48,8 +48,8 @@ public class StudentController {
 
 	//update student
 	@PutMapping("/{studentId}")
-	public ResponseEntity<String> updateStudent(@PathVariable int studentId, @RequestBody StudentAddressDTO studentAddressDto){
-		return ResponseEntity.ok(studentService.updateStudent(studentId,studentAddressDto));
+	public ResponseEntity<String> updateStudent(@PathVariable int studentId, @RequestBody Student newStudent){
+		return ResponseEntity.ok(studentService.updateStudent(studentId,newStudent));
 	}
 
 	//delete student by it's student ID

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.SMGSystemBackendSpringBoot.dto.MentorAddressDTO;
+import com.app.SMGSystemBackendSpringBoot.pojo.Mentor;
 import com.app.SMGSystemBackendSpringBoot.service.IMentorService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -40,8 +41,8 @@ public class MentorController {
 
 	//to update mentor
 	@PutMapping("/{mentorId}")
-	public ResponseEntity<?> updateMentor(@PathVariable int mentorId, @RequestBody MentorAddressDTO mentorAddressDto){
-		return ResponseEntity.ok(mentorService.updateMentor(mentorId, mentorAddressDto));
+	public ResponseEntity<?> updateMentor(@PathVariable int mentorId, @RequestBody Mentor newMentor){
+		return ResponseEntity.ok(mentorService.updateMentor(mentorId, newMentor));
 	}
 
 
