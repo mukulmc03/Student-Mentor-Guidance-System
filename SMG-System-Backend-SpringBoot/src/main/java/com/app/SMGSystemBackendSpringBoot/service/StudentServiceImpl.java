@@ -231,7 +231,6 @@ public class StudentServiceImpl implements IStudentService {
 	}
 
 
-
 	// get Mentors'Address details of selected Student from StudentId  // note:- here we are getting address
 	@Override
 	public Address getAssignedMentorsAddressByStudentId(int studentId) {
@@ -244,5 +243,15 @@ public class StudentServiceImpl implements IStudentService {
 		// get details of address of assignedMentor
 		Address mentorAddress = addressRepository.findAddressByMentorId(mentorId);
 		return mentorAddress;
+	}
+
+
+	//update Marks of studentId
+	@Override
+	public String updateMarks(int studentId, int newMarks) {
+		Student student = studentRepository.findById(studentId).orElseThrow(() -> new ResourceNotFoundException("no Such Student Available.."));
+		student.setStudentMarks(newMarks);
+		studentRepository.save(student);
+		return "Marks Update Done";
 	}
 }

@@ -82,4 +82,10 @@ public class StudentController {
 	public ResponseEntity<?> getMentorsAddressByStudentId(@PathVariable int studentId){
 		return ResponseEntity.ok(studentService.getAssignedMentorsAddressByStudentId(studentId));
 	}
+	
+	//update Marks
+		@PutMapping("/marks/{studentId}/{newMarks}")
+		public ResponseEntity<?> updateMarks(@PathVariable int studentId, @PathVariable int newMarks){
+			return ResponseEntity.ok(studentService.updateMarks(studentId,newMarks));
+		}
 }
