@@ -3,7 +3,7 @@ const Footer = () => {
     <div>
       <footer className="footer">
         <span className="text-muted">
-          Copyright @2021-prsent CDAC-ACTS Students All rights reserved.
+          Copyright @2021-present CDAC-ACTS. Students All rights reserved.
         </span>
       </footer>
     </div>

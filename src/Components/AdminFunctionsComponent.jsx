@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "./HeaderComponent";
 import ListCourseComponent from "./ListCourseComponent";
 import ListOfAllMentors from "./ListOfAllMentorsComponent";
 import StudentSignUpForm from "./StudentSignUpFormComponent";
@@ -10,6 +9,7 @@ import ListOfAdmins from "./ListOfAdminsComponent";
 import MentorSignUpForm from "./MentorSignUpFormComponent";
 import AddCourseForm from "./AddCourseFormComponent";
 import ListOfAllStudents from "./ListOfAllStudentsComponent";
+import AdminService from "../Services/AdminService";
 
 class AdminFunctions extends Component {
   constructor(props) {
@@ -154,6 +154,13 @@ class AdminFunctions extends Component {
       addCourse: true,
     });
   };
+  deleteHandler=()=>{
+    alert(this.state.userData.adminId)
+    AdminService.deleteAdminByAdminId(this.state.userData.adminId).then(res => {
+        localStorage.clear()
+        this.props.history.push('/home')
+    })
+}
   logOutHandler = () => {
     localStorage.clear();
     this.props.history.push("/home");
@@ -162,76 +169,83 @@ class AdminFunctions extends Component {
   render() {
     return (
       <div className="container">
-        <Header title="Student / Mentor Management:" />
+        <ul class="nav nav-tabs customNavTab">
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Profile</span>
+              <div className="dropdown-content">
+                <Link onClick={this.viewProfileHandler}>
+                  <span>View Profile</span>
+                </Link>
+                <Link onClick={this.deleteHandler}>
+                  <span>Delete Account</span>
+                </Link>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Course Management</span>
+              <div className="dropdown-content">
+                <Link onClick={this.addCourseHandler}>
+                  <span>Add Course</span>
+                </Link>
+                <Link onClick={this.cUpdationHandler}>
+                  <span>Manage Course</span>
+                </Link>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Mentor Management</span>
+              <div className="dropdown-content">
+                <Link onClick={this.mentorRegHandler}>
+                  <span>Mentor Registration</span>
+                </Link>
+                <Link onClick={this.mUpdationHandler}>
+                  <span>Manage Mentors</span>
+                </Link>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Student Management</span>
+              <div className="dropdown-content">
+                <Link onClick={this.studentRegHandler}>
+                  <span>Student Registration</span>
+                </Link>
+                <Link onClick={this.sUpdationHandler}>
+                  <span>Manage Students</span>
+                </Link>
+            </div>
+            </div>
+          </li>
 
-        <div className="dropdown">
-          <button className="dropbutton">Profile</button>
-          <div className="dropdown-content">
-            <Link onClick={this.viewProfileHandler}>
-              <span>View Profile</span>
-            </Link>
-            <Link onClick={this.deleteHandler}>
-              <span>Delete Account</span>
-            </Link>
-          </div>
-        </div>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Admin Management</span>
+              <div className="dropdown-content">
+                <Link onClick={this.adminRegistrationHandler}>
+                  <span>Admin Registration</span>
+                </Link>
+                <Link onClick={this.manageAdminHandler}>
+                  <span>Manage Admins</span>
+                </Link>
+              </div>
+            </div>
+          </li>
 
-        <div className="dropdown">
-          <button className="dropbutton">Course Management</button>
-          <div className="dropdown-content">
-            <Link>
-              <span onClick={this.addCourseHandler}>Add Course</span>
-            </Link>
-            <Link>
-              <span onClick={this.cUpdationHandler}>Manage Courses</span>
-            </Link>
-          </div>
-        </div>
-
-        <div className="dropdown">
-          <button className="dropbutton">Student Management</button>
-          <div className="dropdown-content">
-            <Link>
-              <span onClick={this.studentRegHandler}>
-                Student Registration{" "}
-              </span>
-            </Link>
-            <Link>
-              <span onClick={this.sUpdationHandler}>Manage Students</span>
-            </Link>
-          </div>
-        </div>
-
-        <div className="dropdown">
-          <button className="dropbutton">Mentor Management</button>
-          <div className="dropdown-content">
-            <Link>
-              <span onClick={this.mentorRegHandler}>Mentor Registration</span>
-            </Link>
-            <Link>
-              <span onClick={this.mUpdationHandler}>Manage Mentors</span>
-            </Link>
-          </div>
-        </div>
-        <div className="dropdown">
-          <button className="dropbutton">Admin</button>
-          <div className="dropdown-content">
-            <Link>
-              <span onClick={this.adminRegistrationHandler}>
-                Admin Registration
-              </span>
-            </Link>
-            <Link>
-              <span onClick={this.manageAdminHandler}>Manage Admins</span>
-            </Link>
-          </div>
-        </div>
-
-        <Link>
-          <button className="admin-logout" onClick={this.logOutHandler}>
-            LOGOUT
-          </button>
-        </Link>
+          <Link to="/login">
+            <button
+              className="btn btn-outline-dark studentFunctionLogOut"
+              onClick={this.logOutHandler}
+            >
+              Log Out
+            </button>
+          </Link>
+        </ul>
 
         {this.state.sUpdation ? <ListOfAllStudents /> : null}
         {this.state.mUpdation ? <ListOfAllMentors /> : null}

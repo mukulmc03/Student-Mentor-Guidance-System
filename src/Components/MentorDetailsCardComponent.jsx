@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import StudentService from "../Services/StudentService";
+import LoadingComponenet from "./LoadingComponenet";
 
 class MentorDetailsCard extends Component {
   constructor(props) {
@@ -26,20 +27,30 @@ class MentorDetailsCard extends Component {
   render() {
     if (this.state.assignedMentor === "") {
       return (
-        <div className="card text-white bg-dark mb-3 coursedetailcard nomentortext">
-          <br />
-          <br />
-          <h5>The role of a mentor is to encourage the personal </h5>
-          <h5> and professional development of a mentee </h5>
-          <h5>through the sharing of knowledge, expertise and experience.</h5>
-          <br />
-          <br />
-          <h5> Please Get Your Mentor To Get Best experience ! </h5>
+        <div>
+          <div className="greetingsProfileCard">
+            <p className="greetingsProfileInfo">
+              You currently don't have any mentor assigned
+            </p>
+          </div>
+          <div className="card text-white bg-dark mb-3 mentordetailcard nomentortext">
+            <h5>The role of a mentor is to encourage the personal </h5>
+            <h5> and professional development of a mentee </h5>
+            <h5>through the sharing of knowledge, expertise and experience.</h5>
+            <br />
+            <br />
+            <h5> Please Get Your Mentor To Get Best experience ! </h5>
+            (Profile Home -> Mentor -> Get Mentor)
+          </div>
         </div>
       );
     } else {
       return (
         <div>
+          <div className="greetingsProfileCard">
+            <p className="greetingsProfileInfo">
+              You have been assigned the following Mentor</p>
+          </div>
           <div className="card text-white bg-dark mb-3 profilecard1">
             <div className="card-body">
               <h4 className="card-title">Your Mentor Details:</h4>

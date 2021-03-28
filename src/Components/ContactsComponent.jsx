@@ -5,7 +5,13 @@ export default class ContactsComponent extends Component {
   render() {
     return (
       <div className="container">
-        <Header title="Contacts Us" />
+        <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Contact Us
+              </p>
+            </center>
+          </div>
         <div className="row">
           <div className="col-sm-6">
             <div className="card" style={{ top: "20px" }}>

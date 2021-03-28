@@ -34,18 +34,23 @@ class ListOfAssignedStudents extends Component {
   render() {
     return (
       <div>
-        <Header title={"List Of Your Students:"} />
-
+        <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                These are your batch details
+              </p>
+            </center>
+          </div>        <div className="listOfAssignedStudents">
         <table className="table table-striped table-bordered">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">#Id</th>
-              <th scope="col">First_Name</th>
-              <th scope="col">Last_Name</th>
+              <th scope="col">Student Id</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
               <th scope="col">Email</th>
               <th scope="col">Gender</th>
               <th scope="col">D.O.B.</th>
-              <th scope="col">Mo_No</th>
+              <th scope="col">Mobile No</th>
               <th scope="col">Marks</th>
               <th scope="col">Action</th>
             </tr>
@@ -60,7 +65,7 @@ class ListOfAssignedStudents extends Component {
                 <td>{student.studentEmail}</td>
                 <td>{student.studentGender}</td>
                 <td>{student.studentDob}</td>
-                <td>{student.studetMobileNo}</td>
+                <td>{student.studentMobileNo}</td>
                 <td>{student.studentMarks}</td>
                 <td>
                   <button
@@ -74,6 +79,7 @@ class ListOfAssignedStudents extends Component {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     );
   }

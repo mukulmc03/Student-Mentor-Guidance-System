@@ -196,7 +196,7 @@ class MentorUpdateForm extends Component {
       MentorService.updateMentorByMentorId(this.props.data1, updatedMentor)
         .then((response) => {
           this.setState({ updationStatus: false });
-          alert("Form submitted successfully");
+          alert("Mentor updated successfully");
         })
         .catch((error) => {
           console.error(error.response.data.message);
@@ -213,11 +213,18 @@ class MentorUpdateForm extends Component {
     if (this.state.updationStatus) {
       return (
         <div className="container">
+          <div className="greetingsProfileCard">
+          <center className="greetingsProfileInfo">
+            <p style={{ fontSize: "20px" }}>
+              Hello Mentor,
+              <br />
+              Please update your information</p>
+          </center>
+        </div>
           <form
-            className="form-horizontal mentor-signup-form"
+            className="form-horizontal bg-secondary mentorUpdateCard"
             onSubmit={this.submitHandler}
           >
-            <h2> Update Information:</h2>
             <div className="form-group">
               <strong className="col-sm-3 control-label">First Name*</strong>
               <div className="col-sm-9">
@@ -388,8 +395,8 @@ class MentorUpdateForm extends Component {
             <div className="form-group">
               <div className="row">
                 <div className="col-sm-3">
-                  <button type="submit" className="btn btn-primary btn-block">
-                    Update Information
+                  <button type="submit" className="btn btn-outline-dark">
+                    Update
                   </button>
                 </div>
               </div>
@@ -399,11 +406,35 @@ class MentorUpdateForm extends Component {
       );
     } else {
       return (
-        <div className="card text-white bg-dark mb-3 successupdationcard">
-          <div className="card-body">
-            <h5 className="card-title">Successfully Updated..!!</h5>
+       <div className="container">
+         <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Information updated Successfully! Please see your updated
+                information below:
+              </p>
+            </center>
           </div>
-        </div>
+         <div className="card text-white bg-dark  updatedMentorProfileCard">
+            <div className="card-body">
+              <p className="card-text">
+                First Name :- {this.state.mentorFirstName}{" "}
+              </p>
+              <p className="card-text">
+                Last Name :- {this.state.mentorLastName}{" "}
+              </p>
+              <p className="card-text">
+                Email Id :- {this.state.mentorEmail}{" "}
+              </p>
+              <p className="card-text">
+                Mobile No :- {this.state.mentorMoNo}{" "}
+              </p>
+              <p className="card-text">
+                Join date :- {this.state.mentorJoinYear}{" "}
+              </p>
+            </div>
+          </div>
+       </div>
       );
     }
   }

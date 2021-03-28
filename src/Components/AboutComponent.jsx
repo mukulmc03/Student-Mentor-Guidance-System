@@ -4,10 +4,16 @@ export default class AboutComponent extends Component {
   render() {
     return (
       <div className="container">
-        <div className="card" style={{ top: "30px" }}>
-          <div className="card-body">
-            <h5 className="card-header text-center">About Us</h5>
-            <p className="card-text justify">
+        <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                About Us
+              </p> 
+            </center>
+          </div>
+        <div className="card bg-secondary aboutUsCard">
+          <div className="card-body  ">
+            <p className="card-text justify ">
               <br />
               This portal is to benefit students in their career in order to
               acquire required as well as desired skills through appropriate
@@ -18,7 +24,8 @@ export default class AboutComponent extends Component {
               mind skillsets of the mentors, thier avaialability, the training
               course that the student has selected, etc. This is our first
               attempt to create a system to benefit our students.
-              <h5>
+             <br/> 
+             <h5>
                 Please watch out this place for many more and advanced features
                 to launch in near future.
               </h5>

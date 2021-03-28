@@ -20,8 +20,9 @@ class UpdateMarks extends Component {
     StudentService.updateMarks(studentId, this.state.studentMarks).then(
       (response) => {
         this.setState({ result: response.data });
+        alert("Marks updated successfully!")
       }
-    );
+    )
   };
   changeHandler = (event) => {
     let nam = event.target.name;
@@ -33,6 +34,7 @@ class UpdateMarks extends Component {
     MentorService.getAssignedStudentListByMentorId(this.props.data1).then(
       (response) => {
         this.setState({ assignedStudentList: response.data });
+        
       }
     );
   }
@@ -40,14 +42,20 @@ class UpdateMarks extends Component {
   render() {
     return (
       <div>
-        <Header title={"List Of Your Students:"} />
-
+        <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Please, update marks of students
+              </p>
+            </center>
+          </div>
+        <div className="listOfAssignedStudents">
         <table className="table table-striped table-bordered">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">#Id</th>
-              <th scope="col">First_Name</th>
-              <th scope="col">Last_Name</th>
+              <th scope="col">Student Id</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
               <th scope="col">Email</th>
               <th scope="col">Give Marks</th>
               <th scope="col">Action</th>
@@ -82,6 +90,7 @@ class UpdateMarks extends Component {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     );
   }

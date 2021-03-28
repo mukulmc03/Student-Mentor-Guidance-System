@@ -76,11 +76,7 @@ class MentorFunctions extends Component {
   };
 
   deleteHandler = () => {
-    MentorService.deleteMentorByMentorId(this.state.userData.mentorId).then(
-      (res) => {
-        this.props.history.push("/login");
-      }
-    );
+    this.props.history.push("/deletementor");
   };
   logOutHandler = () => {
     localStorage.clear();
@@ -90,51 +86,56 @@ class MentorFunctions extends Component {
   render() {
     return (
       <div className="container">
-        <Header title="Mentor Functions" />
+        <ul class="nav nav-tabs customNavTab">
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Profile</span>
+              <div className="dropdown-content">
+                <Link onClick={this.viewProfileHandler}>
+                  <span>View Profile</span>
+                </Link>
+                <Link onClick={this.updateHandler}>
+                  <span>Update Profile</span>
+                </Link>
+                <Link onClick={this.deleteHandler}>
+                  <span>Delete Account</span>
+                </Link>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Student</span>
+              <div className="dropdown-content">
+                <Link onClick={this.studentListHandler}>
+                  <span>View Batch Details</span>
+                </Link>
+                <Link onClick={this.updateMarksHandler}>
+                  <span>Update Marks of Student</span>
+                </Link>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Course</span>
+              <div className="dropdown-content">
+                <Link onClick={this.courseCardHandler}>
+                  <span>Course Detail</span>
+                </Link>
+              </div>
+            </div>
+          </li>
 
-        <div className="dropdown">
-          <button className="dropbutton">Profile</button>
-          <div className="dropdown-content">
-            <Link onClick={this.viewProfileHandler}>
-              <span>View Profile</span>
-            </Link>
-            <Link onClick={this.updateHandler}>
-              <span>Update Profile</span>
-            </Link>
-            <Link onClick={this.deleteHandler}>
-              <span>Delete Account</span>
-            </Link>
-          </div>
-        </div>
-
-        <div className="dropdown">
-          <button className="dropbutton">Student</button>
-          <div className="dropdown-content">
-            <Link onClick={this.studentListHandler}>
-              <span>View Batch Details</span>
-            </Link>
-            <Link>
-              <span onClick={this.updateMarksHandler}>
-                Update Marks of Student
-              </span>
-            </Link>
-          </div>
-        </div>
-
-        <div className="dropdown">
-          <button className="dropbutton">Course</button>
-          <div className="dropdown-content">
-            <Link onClick={this.courseCardHandler}>
-              <span>Course Detail</span>
-            </Link>
-          </div>
-        </div>
-
-        <Link>
-          <button className="admin-logout" onClick={this.logOutHandler}>
-            LOGOUT
-          </button>
-        </Link>
+          <Link to="/login">
+            <button
+              className="btn btn-outline-dark studentFunctionLogOut"
+              onClick={this.logOutHandler}
+            >
+              Log Out
+            </button>
+          </Link>
+        </ul>
 
         {this.state.courseCard ? (
           <SingleCourseDetailsCard

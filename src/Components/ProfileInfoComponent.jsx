@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import StudentService from "../Services/StudentService";
 import MentorService from "../Services/MentorService";
+import Header from "./HeaderComponent";
 
 class ProfileInfo extends Component {
   constructor(props) {
@@ -39,13 +40,25 @@ class ProfileInfo extends Component {
   render() {
     if (this.state.student === "") {
       return (
-        <div>
-          <div className="card text-white bg-dark mb-3 profilecard1">
+        <div className="row">
+          <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Hello &nbsp;
+                {this.state.mentor.mentorFirstName}
+                &nbsp;{this.state.mentor.mentorLastName}
+                <br />
+                Welcome to Guiding Trail
+              </p>
+            </center>
+          </div>
+          <div className="card text-white bg-dark  profilecard1">
             <div className="card-body">
-              <h4 className="card-title">Profile Details:</h4>
+              <h4 className="card-title">
+                <u>Profile Details:</u>
+              </h4>
               <p className="card-text">
-                Mentor Id :- {this.state.mentor.mentorId} Batch Size :-{" "}
-                {this.state.mentor.batchSize}{" "}
+                <b> Mentor Id :- {this.state.mentor.mentorId}</b>
               </p>
               <p className="card-text">
                 First Name :- {this.state.mentor.mentorFirstName}{" "}
@@ -60,17 +73,19 @@ class ProfileInfo extends Component {
                 Mobile No :- {this.state.mentor.mentorMoNo}{" "}
               </p>
               <p className="card-text">
-                Current Students :- {this.state.mentor.currentBatchSize}{" "}
+                Batch Size :- {this.state.mentor.batchSize} &nbsp; Current
+                Students :- {this.state.mentor.currentBatchSize}{" "}
               </p>
               <p className="card-text">
                 Join date :- {this.state.mentor.mentorJoinYear}{" "}
               </p>
             </div>
           </div>
-
-          <div className="card text-white bg-dark mb-3 profilecard2">
+          <div className="card text-white bg-dark profilecard3">
             <div className="card-body">
-              <h4 className="card-title">Address Details:</h4>
+              <h4 className="card-title">
+                <u>Address Details:</u>
+              </h4>
               <p className="card-text">
                 Address Line 1 :- {this.state.address.addressLine1}{" "}
               </p>
@@ -94,12 +109,25 @@ class ProfileInfo extends Component {
 
     if (this.state.mentor === "") {
       return (
-        <div>
+        <div className="row">
+          <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Hello &nbsp;
+                {this.state.student.studentFirstName}
+                &nbsp;{this.state.student.studentLastName}
+                <br />
+                Welcome to Guiding Trail
+              </p>
+            </center>
+          </div>
           <div className="card text-white bg-dark mb-3 profilecard1">
             <div className="card-body">
-              <h4 className="card-title">Profile Details:</h4>
+              <h4 className="card-title">
+                <u>Profile Details:</u>
+              </h4>
               <p className="card-text">
-                Student Id :- {this.state.student.studentId}{" "}
+                <b>Student Id :- {this.state.student.studentId} </b>
               </p>
               <p className="card-text">
                 First Name :- {this.state.student.studentFirstName}{" "}
@@ -111,7 +139,7 @@ class ProfileInfo extends Component {
                 Email Id :- {this.state.student.studentEmail}{" "}
               </p>
               <p className="card-text">
-                Mobile No :- {this.state.student.studetMobileNo}{" "}
+                Mobile No :- {this.state.student.studentMobileNo}{" "}
               </p>
               <p className="card-text">
                 D.O.B. :- {this.state.student.studentDob}{" "}
@@ -124,7 +152,9 @@ class ProfileInfo extends Component {
 
           <div className="card text-white bg-dark mb-3 profilecard2">
             <div className="card-body">
-              <h4 className="card-title">Address Details:</h4>
+              <h4 className="card-title">
+                <u>Address Details:</u>
+              </h4>
               <p className="card-text">
                 Address Line 1 :- {this.state.address.addressLine1}{" "}
               </p>

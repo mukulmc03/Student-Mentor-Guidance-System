@@ -19,13 +19,19 @@ class AdminProfileCard extends Component {
   render() {
     return (
       <div>
-        <div className="card text-white bg-dark mb-3 adminprofilecard">
+        <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Admin Profile Information:
+              </p>
+            </center>
+          </div>
+        <div className="card text-white bg-dark mb-3 adminProfileCard">
           <div className="card-body">
             <div className="container">
               <br />
-              <h5 className="card-title">Profile Information:</h5>
               <p className="card-text">
-                Admin UserName :- {this.state.adminDetails.adminEmail}{" "}
+                Admin Email :- {this.state.adminDetails.adminEmail}{" "}
               </p>
               <p className="card-text">
                 Date Of Birth :- {this.state.adminDetails.adminDob}{" "}

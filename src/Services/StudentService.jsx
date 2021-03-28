@@ -1,11 +1,16 @@
 import axios from "axios";
 
-const BaseUrl = "http://localhost:8989/FinalProject-v2/students";
+const BaseUrl = "http://localhost:8989/SMG-System-Backend-SpringBoot/students";
 
 class StudentService {
   registerNewStudent(courseId, newStudent) {
     return axios.post(BaseUrl + "/" + courseId, newStudent);
   }
+
+  //Get All Studentlist
+  getStudentList(){
+    return axios.get(BaseUrl);
+}
 
   //get Single mentor information using studentId
   getStudentByStudentId(studentId) {
@@ -39,6 +44,11 @@ class StudentService {
   //Update Exsting Student Information
   updateStudentByStudentId(studentId, updatedStudent) {
     return axios.put(BaseUrl + "/" + studentId, updatedStudent);
+  }
+
+  //update student marks
+  updateMarks(studentId, newMarks){
+    return axios.put(BaseUrl + "/marks/" + studentId + "/" + newMarks);
   }
 }
 

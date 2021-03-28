@@ -291,7 +291,7 @@ class MentorSignUpForm extends Component {
               state: { state1: dataToTransfer },
             });
           }
-          alert("Form Submitted Successfully!");
+          alert("Mentor added Successfully!");
         })
         .catch((error) => {
           alert(error.response.data.message);
@@ -309,16 +309,18 @@ class MentorSignUpForm extends Component {
     if (this.state.fromAdminStatus) {
       return (
         <div className="container">
+          <div className="greetingsProfileCard">
+          <center className="greetingsProfileInfo">
+            <p style={{ fontSize: "20px" }}>
+              Hello Mentor,
+              <br />
+              Please register with your information</p>
+          </center>
+        </div>
           <form
-            className="form-horizontal mentor-signup-form"
+            className="form-horizontal bg-secondary mentorSignupCard"
             onSubmit={this.submitHandler}
           >
-            <h2>
-              {" "}
-              Mentor <br />
-              Registration
-            </h2>
-
             <div className="form-group">
               <strong className="col-sm-3 control-label">First Name*</strong>
               <div className="col-sm-9">
@@ -497,8 +499,8 @@ class MentorSignUpForm extends Component {
                 </div>
               </div>
             </div>
-
-            <h2> Address Details:-</h2>
+            <br/>
+            <h2> Address Details:</h2>
 
             <div className="form-group">
               <strong className="col-sm-3 control-label">Address*</strong>
@@ -616,8 +618,8 @@ class MentorSignUpForm extends Component {
                 <span className="error">{errors.pinCode}</span>
               </div>
             </div>
-
-            <h2> Select Course :-</h2>
+          <br/>
+            <h2> Select Course:</h2>
             <div className="row">
               <div className="col-sm-12">
                 <strong className="col-sm-3 control-label">
@@ -644,12 +646,12 @@ class MentorSignUpForm extends Component {
             </div>
             <br />
 
-            <table className="table table-striped table-bordered">
-              <thead className="thead-dark">
+            <table className="table table-striped table courseTable">
+              <thead className="thead-light">
                 <tr>
                   <th scope="col">Course</th>
-                  <th scope="col">Start_Date</th>
-                  <th scope="col">Start_Date</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
                   <th scope="col"> </th>
                 </tr>
               </thead>
@@ -684,15 +686,15 @@ class MentorSignUpForm extends Component {
             <div className="form-group">
               <div className="row">
                 <div className="col-sm-3">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn btn-outline-dark">
                     Register
                   </button>
                 </div>
                 <div className="col-sm-6">
-                  <button className="btn btn-success ">Back to login</button>
+                  <button className="btn btn-dark">Back to login</button>
                 </div>
               </div>
-            </div>
+            </div><br/>
           </form>
         </div>
       );

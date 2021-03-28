@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = "http://localhost:8989/FinalProject-v2/user";
+const BaseUrl = "http://localhost:8989/SMG-System-Backend-SpringBoot/user";
 
 class UserService {
   authenticateUser(authUser) {

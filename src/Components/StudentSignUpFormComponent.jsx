@@ -248,10 +248,10 @@ class StudentSignUpForm extends Component {
               state: { state1: dataToTransfer },
             });
           }
-          alert("Form Submitted Successfully!");
+          alert("Student added Successfully!");
         })
         .catch((error) => {
-          console.log(error.response.data);
+          console.error(error.response.data);
           this.setState({ backendError: error.response.data.message });
           alert(error.response.data.message);
         });
@@ -272,16 +272,18 @@ class StudentSignUpForm extends Component {
     if (this.state.fromAdminStatus) {
       return (
         <div className="container">
+          <div className="greetingsProfileCard">
+          <center className="greetingsProfileInfo">
+            <p style={{ fontSize: "20px" }}>
+              Hello Student,
+              <br />
+              Please register with your information</p>
+          </center>
+        </div>
           <form
-            className="form-horizontal student-signup-form"
+            className="form-horizontal bg-secondary studentSignupCard"
             onSubmit={this.submitHandler}
           >
-            <h2>
-              {" "}
-              Student <br />
-              Registration
-            </h2>
-
             <div className="form-group">
               <strong className="col-sm-3 control-label">First Name*</strong>
               <div className="col-sm-9">
@@ -420,8 +422,8 @@ class StudentSignUpForm extends Component {
                 </div>
               </div>
             </div>
-
-            <h4> Address Details:-</h4>
+            <br/>
+            <h4> Address Details:</h4>
 
             <div className="form-group">
               <strong className="col-sm-3 control-label">Address*</strong>
@@ -542,14 +544,15 @@ class StudentSignUpForm extends Component {
               <span className="error">{errors.pinCode}</span>
             </div>
 
-            <h4> Select Course :-</h4>
+            <br/>
+            <h4> Select Course:</h4>
 
-            <table className="table table-striped table-bordered">
-              <thead className="thead-dark">
+            <table className="table table-striped table courseTable">
+              <thead className="thead-light">
                 <tr>
                   <th scope="col">Course</th>
-                  <th scope="col">Start_Date</th>
-                  <th scope="col">Start_Date</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
                   <th scope="col"> </th>
                 </tr>
               </thead>
@@ -575,6 +578,7 @@ class StudentSignUpForm extends Component {
             </table>
             <span className="error">{errors.courseId}</span>
 
+            <br/>
             <div className="form-group">
               <div className="col-sm-9 col-sm-offset-3">
                 <span className="help-block">*Required fields</span>
@@ -584,15 +588,15 @@ class StudentSignUpForm extends Component {
             <div className="form-group">
               <div className="row">
                 <div className="col-sm-3">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn btn-outline-dark">
                     Register
                   </button>
                 </div>
                 <div className="col-sm-6">
-                  <button className="btn btn-success ">Back to login</button>
+                  <button className="btn btn-dark">Back to login</button>
                 </div>
               </div>
-            </div>
+            </div><br/>
           </form>
         </div>
       );

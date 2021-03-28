@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = "http://localhost:8989/FinalProject-v2/courses";
+const BaseUrl = "http://localhost:8989/SMG-System-Backend-SpringBoot/courses";
 
 class CourseService {
   // get All courses By Admin

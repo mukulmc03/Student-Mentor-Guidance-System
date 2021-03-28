@@ -1,7 +1,7 @@
 const Header = (props) => {
   return (
     <div className="container header">
-      <h3>{props.title} : </h3>
+      <h3>{props.title} </h3>
     </div>
   );
 };

@@ -5,6 +5,7 @@ class AddCourseForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      courseDetails:'',
       errors: {
         courseName: "",
         startDate: "",
@@ -67,9 +68,11 @@ class AddCourseForm extends Component {
         endDate: this.state.endDate,
       };
 
-      alert("Form submitted Successfully!");
+      
       CourseService.addNewCourse(newCourse).then((response) => {
         this.setState({ status: false });
+        this.setState({courseDetails: response.data})
+        alert("Course added Successfully!");
       });
     } else {
       alert("Form has some errors!");
@@ -87,12 +90,17 @@ class AddCourseForm extends Component {
     if (this.state.status) {
       return (
         <div className="container">
+          <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Add New Course
+              </p>
+            </center>
+          </div>
           <form
-            className="form-horizontal add-course-form"
+            className="form-horizontal bg-dark addCourseCard"
             onSubmit={this.submitHandler}
           >
-            <h2> Fill Course Details:-</h2>
-
             <div className="form-group">
               <strong className="col-sm-3 control-label">Course Name*</strong>
               <div className="col-sm-10">
@@ -102,7 +110,7 @@ class AddCourseForm extends Component {
                   onChange={this.changeHandler}
                   name="courseName"
                   value={this.state.courseName}
-                  placeholder="Course_Name"
+                  placeholder="Course Name"
                 />
                 <span className="error">{errors.courseName}</span>
               </div>
@@ -134,7 +142,7 @@ class AddCourseForm extends Component {
                 <span className="error">{errors.endDate}</span>
               </div>
             </div>
-
+            <br/>
             <div className="form-group">
               <div className="col-sm-9 col-sm-offset-3">
                 <span className="help-block">*Required fields</span>
@@ -144,7 +152,7 @@ class AddCourseForm extends Component {
             <div className="form-group">
               <div className="row">
                 <div className="col-sm-6">
-                  <button type="submit" className="btn btn-success ">
+                  <button type="submit" className="btn btn-outline-light ">
                     Add Course
                   </button>
                 </div>
@@ -155,10 +163,32 @@ class AddCourseForm extends Component {
       );
     } else {
       return (
-        <div className="card text-white bg-dark mb-3 successupdationcard">
-          <div className="card-body">
-            <h5 className="card-title">Successfully Added..!!</h5>
+        <div className="container">
+          <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Course Information updated Successfully! Please see updated course
+                information below:
+              </p>
+            </center>
           </div>
+          <div className="card text-white bg-dark mb-3 coursedetailcard">
+          <div className="card-body">
+            <h5 className="card-title"><u>Course Information:</u></h5>
+            <p className="card-text">
+              Course Name :- {this.state.courseDetails.courseName}{" "}
+            </p>
+            <p className="card-text">
+              Course Id :- {this.state.courseDetails.courseId}{" "}
+            </p>
+            <p className="card-text">
+              Start Date :- {this.state.courseDetails.startDate}{" "}
+            </p>
+            <p className="card-text">
+              End Date :- {this.state.courseDetails.endDate}{" "}
+            </p>
+          </div>
+        </div>
         </div>
       );
     }

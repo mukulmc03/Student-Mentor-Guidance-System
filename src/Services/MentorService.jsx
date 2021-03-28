@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = "http://localhost:8989/FinalProject-v2/mentor";
+const BaseUrl = "http://localhost:8989/SMG-System-Backend-SpringBoot/mentor";
 
 class MentorService {
   registerNewMentor(courseId, newMentor) {

@@ -20,11 +20,15 @@ export default class FAQComponent extends Component {
   render() {
     return (
       <div className="container">
-        <Header title={"Frequently Asked Questions"} />
+        <div className="greetingsProfileCard">
+          <center className="greetingsProfileInfo">
+            <p style={{ fontSize: "20px" }}>Frequently Asked Questions</p>
+          </center>
+        </div>
         {this.state.queries.map((query) => (
-          <Accordion>
+          <Accordion className="FaqAccordion">
             <Card>
-              <Card.Header>
+              <Card.Header className="FaQuestions bg-secondary">
                 <Accordion.Toggle as={Button} variant="text" eventKey="0">
                   {query.question}
                 </Accordion.Toggle>

@@ -106,7 +106,7 @@ class AdminForm extends Component {
       AdminService.addNewAdmin(newAdmin)
         .then((response) => {
           this.setState({ regStatus: false });
-          alert("Form submitted Successfully");
+          alert("Admin added Successfully");
         })
         .catch((err) => {
           console.error(err.response.data);
@@ -130,18 +130,19 @@ class AdminForm extends Component {
     if (this.state.regStatus) {
       return (
         <div className="container">
+          <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Register New Admin
+              </p>
+            </center>
+          </div>
           <form
-            className="form-horizontal student-signup-form"
+            className="form-horizontal bg-secondary adminSigupCard"
             onSubmit={this.submitHandler}
           >
-            <h2>
-              {" "}
-              Admin <br />
-              Registration
-            </h2>
-
             <div className="form-group">
-              <strong className="col-sm-3 control-label">UserName* </strong>
+              <strong className="col-sm-3 control-label">Email Id* </strong>
               <div className="col-sm-9">
                 <input
                   type="email"
@@ -237,7 +238,7 @@ class AdminForm extends Component {
                 </div>
               </div>
             </div>
-
+            <br/>
             <div className="form-group">
               <div className="col-sm-9 col-sm-offset-3">
                 <span className="help-block">*Required fields</span>
@@ -247,7 +248,7 @@ class AdminForm extends Component {
             <div className="form-group">
               <div className="row">
                 <div className="col-sm-3">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit" className="btn btn-outline-light">
                     Register
                   </button>
                   {this.state.BackendError && (

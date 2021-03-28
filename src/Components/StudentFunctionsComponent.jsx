@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import StudentService from "../Services/StudentService";
 import AssignedMentorCard from "./AssignedMentorCardComponent";
+import GetCertificateComponent from "./GetCertificateComponent";
 import Header from "./HeaderComponent";
+import LoadingComponenet from "./LoadingComponenet";
 import MentorDetailsCard from "./MentorDetailsCardComponent";
 import ProfileInfo from "./ProfileInfoComponent";
 import SingleCourseDetailsCard from "./SingleCourseDetailsCardComponent";
@@ -19,11 +21,6 @@ class StudentFunctions extends Component {
       getMentor: false,
       updateProfile: false,
     };
-    this.courseCardHandler = this.courseCardHandler.bind(this);
-    this.viewProfileHandler = this.viewProfileHandler.bind(this);
-    this.mentorInfoHandler = this.mentorInfoHandler.bind(this);
-    this.deleteHandler = this.deleteHandler.bind(this);
-    this.getMentorHandler = this.getMentorHandler.bind(this);
   }
 
   courseCardHandler = () => {
@@ -33,6 +30,7 @@ class StudentFunctions extends Component {
       mentorInfo: false,
       getMentor: false,
       updateProfile: false,
+      certificateCard: false
     });
   };
   viewProfileHandler = () => {
@@ -42,6 +40,7 @@ class StudentFunctions extends Component {
       mentorInfo: false,
       getMentor: false,
       updateProfile: false,
+      certificateCard: false
     });
   };
   mentorInfoHandler = () => {
@@ -51,6 +50,7 @@ class StudentFunctions extends Component {
       mentorInfo: true,
       getMentor: false,
       updateProfile: false,
+      certificateCard: false
     });
   };
   getMentorHandler = () => {
@@ -60,6 +60,7 @@ class StudentFunctions extends Component {
       mentorInfo: false,
       getMentor: true,
       updateProfile: false,
+      certificateCard: false
     });
   };
 
@@ -70,15 +71,27 @@ class StudentFunctions extends Component {
       mentorInfo: false,
       getMentor: false,
       updateProfile: true,
+      certificateCard: false
     });
-  };
+    };
+    certificateHandler = () => {
+      this.setState({
+        certificateCard: true,
+        courseCard: false,
+        viewProfile: false,
+        mentorInfo: false,
+        getMentor: false,
+        updateProfile: false,
+      });
+  }
 
   deleteHandler = () => {
-    StudentService.deleteStudentByStudentId(this.state.userData.studentId).then(
-      (res) => {
-        this.props.history.push("/login");
-      }
-    );
+    // StudentService.deleteStudentByStudentId(this.state.userData.studentId).then(
+    //   (res) => {
+    //     this.props.history.push("/login");
+    //   }
+    // );
+    this.props.history.push("/deletestudent");
   };
   logOutHandler = () => {
     localStorage.clear();
@@ -88,52 +101,70 @@ class StudentFunctions extends Component {
   render() {
     return (
       <div className="container">
-        <Header title="Student Functions" />
-
-        <div className="dropdown">
-          <button className="dropbutton">Profile</button>
-          <div className="dropdown-content">
-            <Link onClick={this.viewProfileHandler}>
-              <span>View Profile</span>
-            </Link>
-            <Link onClick={this.updateHandler}>
-              <span>Update Profile</span>
-            </Link>
-            <Link onClick={this.deleteHandler}>
-              <span>Delete Account</span>
-            </Link>
-          </div>
-        </div>
-
-        <div className="dropdown">
-          <button className="dropbutton">Mentor</button>
-          <div className="dropdown-content">
-            <Link onClick={this.getMentorHandler}>
-              <span>Get Metor</span>
-            </Link>
-            <Link onClick={this.mentorInfoHandler}>
-              <span>Mentor Information</span>
-            </Link>
-            <Link>
-              <span>Change Mentor</span>
-            </Link>
-          </div>
-        </div>
-
-        <div className="dropdown">
-          <button className="dropbutton">Course</button>
-          <div className="dropdown-content">
-            <Link onClick={this.courseCardHandler}>
-              <span>Course Detail</span>
-            </Link>
-          </div>
-        </div>
-
-        <Link to="/login">
-          <button className="admin-logout" onClick={this.logOutHandler}>
-            LOGOUT
-          </button>
-        </Link>
+        <ul class="nav nav-tabs customNavTab">
+          <li class="nav-item">
+            <div className="dropdown">
+              <p className="nav-link customNavTab">Profile</p>
+              <div className="dropdown-content">
+                <Link onClick={this.viewProfileHandler}>
+                  <span>View Profile</span>
+                </Link>
+                <Link onClick={this.updateHandler}>
+                  <span>Update Profile</span>
+                </Link>
+                <Link onClick={this.deleteHandler}>
+                  <span>Delete Account</span>
+                </Link>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Mentor</span>
+              <div className="dropdown-content">
+                <Link onClick={this.getMentorHandler}>
+                  <span>Get Mentor</span>
+                </Link>
+                <Link onClick={this.mentorInfoHandler}>
+                  <span>Mentor Information</span>
+                </Link>
+                {/* <Link>
+                  <span>Change Mentor</span>
+                </Link> */}
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Course</span>
+              <div className="dropdown-content">
+                <Link onClick={this.courseCardHandler}>
+                  <span>Course Detail</span>
+                </Link>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div className="dropdown">
+              <span className="nav-link customNavTab">Certificate</span>
+              <div className="dropdown-content">
+                <Link onClick={this.certificateHandler}>
+                  <span>Get Certificate</span>
+                </Link>
+              </div>
+            </div>
+          </li>
+      <li>
+          <Link to="/login">
+            <span
+              className=" studentFunctionLogOut"
+              onClick={this.logOutHandler}
+            >
+              Log Out
+            </span>
+          </Link>
+          </li>
+        </ul>
 
         {this.state.courseCard ? (
           <SingleCourseDetailsCard
@@ -161,6 +192,10 @@ class StudentFunctions extends Component {
 
         {this.state.updateProfile ? (
           <StudentUpdateForm data1={this.state.userData.studentId} />
+        ) : null}
+
+        {this.state.certificateCard ? (
+          <GetCertificateComponent/>
         ) : null}
       </div>
     );

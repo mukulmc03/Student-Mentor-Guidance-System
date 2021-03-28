@@ -11,37 +11,40 @@ class SuccessfullRegistration extends Component {
 
   componentDidMount() {
     this.setState({ details: this.props.location.state.state1 });
+    
   }
+ 
 
   render() {
     return (
       <div>
-        <div className="container successfullRegLines">
-          <h3> Thanku For Registration </h3>
-          <h3> It Has Been Completed Successfully..!!!</h3>
-        </div>
-
-        <div className="card text-white bg-dark mb-3 successfullRegCard">
-          <div className="card-header">
-            Hello {this.state.details.FirstName} Please Remember Your Details:{" "}
+        <div className="greetingsProfileCard">
+          <center className="greetingsProfileInfo">
+            <p style={{ fontSize: "20px" }}>
+            Hello {this.state.details.FirstName}, Thank you for joining us<br/>
+            Please, remember your credentials
+            </p>
+          </center>
           </div>
+        <div className="card text-white bg-dark mb-3 successfullRegCard">
+
           <div className="card-body">
-            <h5 className="card-title">Details:</h5>
             <p className="card-text">
-              You Have Registered With Username :- {this.state.details.Email}{" "}
+              You Have Registered With Email: {this.state.details.Email}{" "}
             </p>
             <p className="card-text">
-              Your Course ID :- {this.state.details.courseId}{" "}
+              Your Course ID: {this.state.details.courseId}{" "}
             </p>
             <p className="card-text">
-              Your Mo_No Is :- {this.state.details.MobileNo}{" "}
+              Your Mobile No: {this.state.details.MobileNo}{" "}
             </p>
             <p className="card-text">
-              Your Address :- {this.state.details.addressLine1}{" "}
+              Your Address: {this.state.details.addressLine1}{" "}
               {this.state.details.addressLine2}{" "}
             </p>
-            <Link to="/login">
-              <button> Click Here To Login </button>
+            <br/>
+            <Link to="/home">
+              <button className="btn btn-outline-light">Home</button>
             </Link>
           </div>
         </div>

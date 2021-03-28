@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BaseUrl = "http://localhost:8989/FinalProject-v2/admin";
+const BaseUrl = "http://localhost:8989/SMG-System-Backend-SpringBoot/admin";
 
 class AdminService {
   // get admin by Admin Id

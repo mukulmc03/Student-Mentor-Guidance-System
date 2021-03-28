@@ -19,6 +19,7 @@ class ListCourseComponent extends Component {
       this.setState({
         courses: this.state.courses.filter((a) => a.courseId !== courseId),
       });
+      alert("Course deleted successfully")
     });
   }
 
@@ -31,15 +32,21 @@ class ListCourseComponent extends Component {
   render() {
     return (
       <div>
-        <Header title={"Course List"} />
-
+        <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                List of All Courses
+              </p>
+            </center>
+          </div>
+        <div className="listOfCourseDetails">
         <table className="table table-striped table-bordered">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Course_Name</th>
-              <th scope="col">Start_Date</th>
-              <th scope="col">Start_Date</th>
+              <th scope="col">Course ID</th>
+              <th scope="col">Course Name</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">Start Date</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -61,6 +68,7 @@ class ListCourseComponent extends Component {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     );
   }

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import StudentService from "../Services/StudentService";
+import ProfileInfo from "./ProfileInfoComponent";
+import StudentFunctions from "./StudentFunctionsComponent";
 
 class StudentUpdateForm extends Component {
   constructor(props) {
@@ -152,16 +154,14 @@ class StudentUpdateForm extends Component {
         studentGender: this.state.studentGender,
       };
       console.log(JSON.stringify(updatedStudent));
-      StudentService.updateStudentByStudentId(this.props.data1, updatedStudent)
-        .then((response) => {
-          this.setState({ updationStatus: false });
-          alert("Form submitted Successfully");
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-          this.setState({ BackendError: error.response.data.message });
-          alert(error.response.data.message);
-        });
+      StudentService.updateStudentByStudentId(
+        this.props.data1,
+        updatedStudent
+      ).then((response) => {
+        this.setState({ updationStatus: false });
+        alert("Student updated Successfully");
+        //this.props.history.push("/studentlogin");
+      });
     } else {
       alert("Form has some errors");
       console.error("Invalid Form!" + JSON.stringify(this.state.errors));
@@ -173,12 +173,19 @@ class StudentUpdateForm extends Component {
     if (this.state.updationStatus) {
       return (
         <div className="container">
+          <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Hello Student,
+                <br />
+                Please update your information
+              </p>
+            </center>
+          </div>
           <form
-            className="form-horizontal student-signup-form"
+            className="form-horizontal bg-secondary studentUpdateCard"
             onSubmit={this.submitHandler}
           >
-            <h2> Update Information: </h2>
-
             <div className="form-group">
               <strong className="col-sm-3 control-label">First Name*</strong>
               <div className="col-sm-9">
@@ -318,7 +325,7 @@ class StudentUpdateForm extends Component {
                 </div>
               </div>
             </div>
-
+            <br />
             <div className="form-group">
               <div className="col-sm-9 col-sm-offset-3">
                 <span className="help-block">*Required fields</span>
@@ -328,8 +335,8 @@ class StudentUpdateForm extends Component {
             <div className="form-group">
               <div className="row">
                 <div className="col-sm-3">
-                  <button type="submit" className="btn btn-primary btn-block">
-                    Update Information
+                  <button type="submit" className="btn btn-outline-dark">
+                    Update
                   </button>
                 </div>
               </div>
@@ -339,9 +346,32 @@ class StudentUpdateForm extends Component {
       );
     } else {
       return (
-        <div className="card text-white bg-dark mb-3 successupdationcard">
-          <div className="card-body">
-            <h5 className="card-title">Successfully Updated..!!</h5>
+        <div className="container">
+          <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                Information updated Successfully! Please see your updated
+                information below:
+              </p>
+            </center>
+          </div>
+          <div className="card text-white bg-dark mb-3 updatedStudentProfileCard">
+            <div className="card-body">
+              <p className="card-text">
+                First Name :- {this.state.studentFirstName}{" "}
+              </p>
+              <p className="card-text">
+                Last Name :- {this.state.studentLastName}{" "}
+              </p>
+              <p className="card-text">
+                Email Id :- {this.state.studentEmail}{" "}
+              </p>
+              <p className="card-text">
+                Mobile No :- {this.state.studentMobileNo}{" "}
+              </p>
+              <p className="card-text">D.O.B. :- {this.state.studentDob} </p>
+              <p className="card-text">Gender :- {this.state.studentGender} </p>
+            </div>
           </div>
         </div>
       );

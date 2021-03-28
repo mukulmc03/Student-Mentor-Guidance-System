@@ -17,32 +17,43 @@ class ListOfAllMentors extends Component {
       this.setState({
         mentors: this.state.mentors.filter((a) => a.mentorId !== mentorId),
       });
+      alert("Mentor deleted successfully")
     });
   }
 
   componentDidMount() {
-    MentorService.getAllMentors().then((response) => {
-      this.setState({ mentors: response.data });
-    });
+    MentorService.getAllMentors()
+      .then((response) => {
+        this.setState({ mentors: response.data });
+      })
+      .catch((error) => {
+        console.error(error.response.data.message);
+      });
   }
 
   render() {
     return (
       <div>
-        <Header title={"Mentor List"} />
-
+        <div className="greetingsProfileCard">
+            <center className="greetingsProfileInfo">
+              <p style={{ fontSize: "20px" }}>
+                List of All Registered Mentors
+              </p>
+            </center>
+          </div>
+        <div className="listOfCourseDetails">
         <table className="table table-striped table-bordered">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">#Id</th>
-              <th scope="col">First_Name</th>
-              <th scope="col">Last_Name</th>
+              <th scope="col">Mentor Id</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
               <th scope="col">Email</th>
               <th scope="col">Gender</th>
-              <th scope="col">Batch_Size</th>
-              <th scope="col">Current_Students</th>
-              <th scope="col">Skill_Rate</th>
-              <th scope="col">Mo_No</th>
+              <th scope="col">Batch Size</th>
+              <th scope="col">Current Students</th>
+              <th scope="col">Skill Rating</th>
+              <th scope="col">Mobile No</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -71,6 +82,7 @@ class ListOfAllMentors extends Component {
             ))}
           </tbody>
         </table>
+      </div>
       </div>
     );
   }
