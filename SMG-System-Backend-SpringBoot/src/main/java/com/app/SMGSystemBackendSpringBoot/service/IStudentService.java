@@ -26,6 +26,9 @@ public interface IStudentService {
 
 	//assign mentor to student and get list of assigned mentors in return
 	public Mentor assignMentorToStudent(int studentId);
+	
+	//update marks of student (done by mentor)
+	public String updateMarks(int studentId, int newMarks);
 
 	Address getAddressByStudentId(int studentId);
 
